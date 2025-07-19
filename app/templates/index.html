@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Bienvenido a Mi Curriculum Profesional</h1>
+            <p>Explora mi trayectoria, habilidades y experiencia</p>
+            <div class="hero-cta">
+                <a href="{% url 'about' %}" class="btn btn-primary">Conóceme</a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">Contáctame</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="quick-links">
+    <div class="container">
+        <h2>Acceso Rápido</h2>
+        <div class="links-grid">
+            <a href="{% url 'about' %}" class="link-card">
+                <i class="fas fa-user"></i>
+                <h3>Quién Soy</h3>
+                <p>Conoce más sobre mí y mi trayectoria profesional</p>
+            </a>
+            <a href="{% url 'experience' %}" class="link-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>Experiencia</h3>
+                <p>Mi historial laboral y proyectos destacados</p>
+            </a>
+            <a href="{% url 'skills' %}" class="link-card">
+                <i class="fas fa-code"></i>
+                <h3>Habilidades</h3>
+                <p>Tecnologías y competencias que domino</p>
+            </a>
+            <a href="{% url 'contact' %}" class="link-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Contacto</h3>
+                <p>Formas de ponerte en contacto conmigo</p>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

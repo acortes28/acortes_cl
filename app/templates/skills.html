@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mis Habilidades{% endblock %}
+
+{% block content %}
+<section class="skills-section">
+    <div class="container">
+        <h1>Mis Habilidades y Tecnologías</h1>
+        
+        <div class="skills-categories">
+            <div class="category-card">
+                <h2><i class="fas fa-code"></i> Desarrollo Web</h2>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <span class="skill-name">HTML/CSS</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Django</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <h2><i class="fas fa-database"></i> Bases de Datos</h2>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <span class="skill-name">PostgreSQL</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">MySQL</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <h2><i class="fas fa-language"></i> Idiomas</h2>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Español (Nativo)</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Inglés</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="certifications">
+            <h2><i class="fas fa-certificate"></i> Certificaciones</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <h3>Certificación en Django</h3>
+                    <p>Plataforma - Año</p>
+                    <a href="#" class="cert-link">Ver credencial</a>
+                </div>
+                <div class="cert-card">
+                    <h3>Certificación en JavaScript</h3>
+                    <p>Plataforma - Año</p>
+                    <a href="#" class="cert-link">Ver credencial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
