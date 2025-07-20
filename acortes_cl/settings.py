@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t!3t98^#cma39bk0n0ff_%)zl*h=c29s34@9q=c@566-bjhvjm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']#['0.0.0.0', '127.0.0.1']
 
 
 # Configuración de email
@@ -34,9 +34,9 @@ EMAIL_HOST = 'smtp.gmail.com'  # Ej: smtp.gmail.com
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'acortes.cl@gmail.com'
-EMAIL_HOST_PASSWORD = 'acortes.cl'
-DEFAULT_FROM_EMAIL = 'acortes.cl@gmail.com'
-CONTACT_EMAIL = 'acortes.cl@gmail.com'
+EMAIL_HOST_PASSWORD = 'qrqs phvv evee qkf'
+DEFAULT_FROM_EMAIL = 'alejandro.cortes.v28@gmail.com'
+CONTACT_EMAIL = 'alejandro.cortes.v28@gmail.com'
 
 # Application definition
 

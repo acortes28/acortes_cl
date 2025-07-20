@@ -15,6 +15,9 @@ def experience(request):
 def skills(request):
     return render(request, 'skills.html', {'title': 'Habilidades'})
 
+def personal_projects(request):
+    return render(request, 'personal_projects.html', {'title': 'Proyectos personales'})
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')

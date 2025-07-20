@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Proyectos Personales{% endblock %}
+
+{% block content %}
+<section class="projects-section">
+    <div class="container">
+        <h1>Mis Proyectos Personales</h1>
+        
+        <div class="projects-layout">
+            <!-- Panel lateral con tabs -->
+            <div class="sidebar">
+                <div class="sidebar-tabs">
+                    <button class="sidebar-tab active" data-project="metlife-orienta">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Rockolapp</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="centrality">
+                        <i class="fas fa-bolt"></i>
+                        <span>Counter de tiempo</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="kinetyc">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>OfixBot</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="enrolamiento">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Punto de venta para cafeterías</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="main-content">
+                <!-- MetLife Orienta -->
+                <div class="project-content active" id="metlife-orienta">
+                    <div class="project-header">
+                        <h2>Rockolapp</h2>
+                        <div class="project-meta">
+                            <span class="company">Pausado</span>
+                            <span class="period">2024 - 2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Proyecto para crear aplicación móvil para poder encolar canciones en una playlist de alguna cafetería o bar.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Principales</h3>
+                        <ul>
+                            <li><strong>Encolar canciones:</strong> Encolar canciones en una playlist de alguna cafetería o bar</li>
+                            <li><strong>Ver playlist:</strong> Ver la playlist de la cafetería o bar</li>
+                            <li><strong>Comprar fichas virtuales:</strong> Comprar packs de fichas para poder encolar canciones</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Camunda</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">API REST</span>
+                            <span class="tech-tag">Microservicios</span>
+                            <span class="tech-tag">Nginx</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Centrality -->
+                <div class="project-content" id="centrality">
+                    <div class="project-header">
+                        <h2>Counter de tiempo</h2>
+                        <div class="project-meta">
+                            <span class="company">Completado</span>
+                            <span class="period">2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Interfaz gráfica para poder controlar el tiempo de tareas personales en el trabajo.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Principales</h3>
+                        <ul>
+                            <li><strong>Control de tiempo:</strong> Control de tiempo de tareas personales en el trabajo</li>
+                            <li><strong>Reportes:</strong> Reportes de tiempo de tareas personales en el trabajo</li>
+                            <li><strong>Histórico de tareas:</strong> Histórico de tareas personales en el trabajo</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Tkinter</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Excel</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/acortes28/counter" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ver Repositorio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kinetyc -->
+                <div class="project-content" id="kinetyc">
+                    <div class="project-header">
+                        <h2>OfixBot</h2>
+                        <div class="project-meta">
+                            <span class="company">Completado</span>
+                            <span class="period">2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p></p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Principales</h3>
+                        <ul>
+                            <li><strong>Creación automatizada de cotizaciones:</strong> A partir de correos entrantes, se identifican los productos consultados con IA y se elabora una cotización</li>
+                            <li><strong>Integración con Maxxa ERP:</strong> Navegación automatizada a través de la página Maxxa ERP para generar cotizaciones.</li>
+                            <li><strong>Envío de correo con cotización:</strong> Se adjunta el PDF obtenido del ERP para enviar el correo con la cotización</li>
+                            <li><strong>Almacenamiento y envío de data:</strong> Generación de reportes en .csv para poder analizar la data</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">API ChatGPT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enrolamiento Digital -->
+                <div class="project-content" id="enrolamiento">
+                    <div class="project-header">
+                        <h2>Punto de venta para cafeterías</h2>
+                        <div class="project-meta">
+                            <span class="company">En Proceso</span>
+                            <span class="period">2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Creación de software que funciona como punto de venta para cafeterías. Se considera el BOM (Bills of amterials) por producto producido en el establecimiento.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Implementadas</h3>
+                        <ul>
+                            <li><strong>Gestión de stock:</strong> Control de stock de productos en el establecimiento</li>
+                            <li><strong>Control de ventas:</strong> Control de ventas de productos en el establecimiento</li>
+                            <li><strong>Gestión de producción:</strong> Control de producción de productos en el establecimiento</li>
+                            <li><strong>Gestión del BOM:</strong> Control del BOM por producto producido en el establecimiento</li>
+                            <li><strong>Creación de comandas:</strong> Creación de comandas para la producción de productos en el establecimiento</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Kivy</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Bizagi</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://suscripciondigital.vidacamara.cl/" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Acceder al Sistema
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Experiencia Laboral -->
+                <div class="project-content" id="experience">
+                    <div class="project-header">
+                        <h2>Experiencia Laboral</h2>
+                        <p class="subtitle">Mi trayectoria profesional en el mundo del análisis de negocio</p>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Dic 2024 - Presente</div>
+                            <div class="timeline-content">
+                                <h3>Business Analyst</h3>
+                                <h4>MetLife - Imagemaker</h4>
+                                <ul class="responsibilities">
+                                    <li>Creación de historias de usuario en un marco de trabajo SCRUM para el proceso de agendamiento para telemedicina y para un cotizador de medicamentos interfarmacias.</li>
+                                    <li>Levantamiento de procesos técnicos y de negocio con BPMN.</li>
+                                    <li>Análisis de KPI's de gestión de creación de dashboards con el área de Analytics.</li>
+                                    <li>Coordinación con proveedores de telemedicina para resolver incidencias y proponer mejoras en la experiencia de usuario.</li>
+                                </ul>
+                                <div class="technologies">
+                                    <span>Tecnologías:</span>
+                                    <span class="tech-tag">Jira</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Bizagi</span>
+                                    <span class="tech-tag">SQLServer</span>
+                                    <span class="tech-tag">BPMN</span>
+                                    <span class="tech-tag">Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Dic 2023 - Dic 2024</div>
+                            <div class="timeline-content">
+                                <h3>Analista funcional</h3>
+                                <h4>Anachronics</h4>
+                                <ul class="responsibilities">
+                                    <li>Levantamiento de requierimientos para el desarrollo de software para compañía eléctrica.</li>
+                                    <li>Gestión y seguimiento de proyectos de software para el cumplimiento funcional de la solución.</li>
+                                    <li>Coordinación con stakeholders para identificar brechas entre el negocio y las solucinoes tecnológicas.</li>
+                                    <li>Levantamiento y análisis de procesos de negocio para la implementación de soluciones tecnológicas.</li>
+                                    <li>Mejora continua de procesos operacionales de desarrollo de software.</li>
+                                </ul>
+                                <div class="technologies">
+                                    <span>Tecnologías:</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Bizagi</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">BPMN</span>
+                                    <span class="tech-tag">Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Dic 2022 - Dic 2023</div>
+                            <div class="timeline-content">
+                                <h3>Business Analyst</h3>
+                                <h4>Clave</h4>
+                                <ul class="responsibilities">
+                                    <li>Levantamiento y análisis de procesos de negocio.</li>
+                                    <li>Creación de dashboards para el negocio a través con Power BI.</li>
+                                    <li>Levantamiento de requerimientos funcionales para el desarrollo de software del ERP como SaaS.</li>
+                                    <li>Liderazgo de equipo de desarrolladores en apoyo al Product Owner.</li>
+                                    <li>Automatización de procesos de reportería con Python.</li> 
+                                </ul>
+                                <div class="technologies">
+                                    <span>Tecnologías:</span>
+                                    <span class="tech-tag">Power BI</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Excel</span>
+                                    <span class="tech-tag">Jira</span>
+                                    <span class="tech-tag">BPMN</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Sep 2020 - Dic 2022</div>
+                            <div class="timeline-content">
+                                <h3>Business Analyst</h3>
+                                <h4>Cía. de seguros VidaCámara</h4>
+                                <ul class="responsibilities">
+                                    <li>Gestionar y liderar célula de desarrollo de software.</li>
+                                    <li>Levantamiento de requerimientos de software del ERP corporativo para la industria de seguros.</li>
+                                    <li>Gestión y liderazgo de la célula de mejora continua (Kaizen)</li>
+                                    <li>Desarrollo de reporte Power BI para el área de operaciones de seguros de invalidez y sobrevivencia.</li>
+                                    <li>Levantamiento de requerimientos, desarrollo, imlementación y mantención de robot que automatiza el proceso de liquidación de comisiones de seguros.</li>
+                                    <li>Apoyo a célula de automatización de procesos con RPA.</li>
+                                </ul>
+                                <div class="technologies">
+                                    <span>Tecnologías:</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Bizagi</span>
+                                    <span class="tech-tag">SQLServer</span>
+                                    <span class="tech-tag">BPMN</span>
+                                    <span class="tech-tag">Power BI</span>
+                                    <span class="tech-tag">Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 2019 - Sep 2020</div>
+                            <div class="timeline-content">
+                                <h3>Líder de operaciones</h3>
+                                <h4>Gardencorp</h4>
+                                <ul class="responsibilities">
+                                    <li>Planificación, contratación y gestión de personal de apoyo a la operación.</li> 
+                                    <li>Gestionar y liderar proyecto operacional con equipo administrativo de control de asistencia y gestión de incidencias.</li> 
+                                    <li>Levantar requerimientos funcionales para la automatización de procesos con el sistema ERP de Gardencorp.</li>
+                                    <li>Mejora de procesos de operaciones a través de gestión de procesos con BPMN 2.0.</li>
+                                </ul>
+                                <div class="technologies">
+                                    <span>Tecnologías:</span>
+                                    <span class="tech-tag">BPMN</span>
+                                    <span class="tech-tag">Excel</span>
+                                    <span class="tech-tag">Bizagi</span>
+                                    <span class="tech-tag">Filemaker</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Ene 2018 - Ago 2018</div>
+                            <div class="timeline-content">
+                                <h3>Analista de control de gestión</h3>
+                                <h4>Cía Industrial El Volcán</h4>
+                                <ul class="responsibilities">
+                                    <li>Reportería de gastos administrativos y de ventas para las gerencias de la compañía.</li> 
+                                    <li>Control de gastos de plantas productivas.</li> 
+                                    <li>Análisis de gastos por centro de costos.</li>
+                                </ul>
+                                <div class="technologies">
+                                    <span>Tecnologías:</span>
+                                    <span class="tech-tag">SAP</span>
+                                    <span class="tech-tag">Excel</span>
+                                    <span class="tech-tag">Power Point</span>
+                                    <span class="tech-tag">Qlikview</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarTabs = document.querySelectorAll('.sidebar-tab');
+    const projectContents = document.querySelectorAll('.project-content');
+
+    sidebarTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetProject = this.getAttribute('data-project');
+            
+            // Remover clase active de todos los tabs y contenidos
+            sidebarTabs.forEach(t => t.classList.remove('active'));
+            projectContents.forEach(c => c.classList.remove('active'));
+            
+            // Agregar clase active al tab clickeado y su contenido correspondiente
+            this.classList.add('active');
+            document.getElementById(targetProject).classList.add('active');
+        });
+    });
+});
+</script>
+{% endblock %}

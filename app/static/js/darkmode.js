@@ -113,4 +113,82 @@ document.addEventListener('DOMContentLoaded', function() {
             hero.style.transform = `translateY(${rate}px)`;
         }
     });
+    
+    // Funcionalidad del modal de PDF
+    const pdfModal = document.getElementById('pdf-modal');
+    const pdfIframe = document.getElementById('pdf-iframe');
+    const pdfDownloadBtn = document.getElementById('pdf-download-btn');
+    const pdfCloseBtn = document.getElementById('pdf-close-btn');
+    const pdfViewerBtns = document.querySelectorAll('.pdf-viewer-btn');
+    
+    let currentPdfUrl = '';
+    
+    // Abrir modal de PDF
+    pdfViewerBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const pdfUrl = this.getAttribute('data-pdf-url');
+            currentPdfUrl = pdfUrl;
+            
+            // Configurar el iframe
+            pdfIframe.src = pdfUrl;
+            
+            // Mostrar el modal
+            pdfModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+            
+            // Efecto de entrada
+            setTimeout(() => {
+                pdfModal.style.opacity = '1';
+            }, 10);
+        });
+    });
+    
+    // Cerrar modal
+    function closePdfModal() {
+        pdfModal.classList.remove('show');
+        document.body.style.overflow = ''; // Restaurar scroll del body
+        pdfIframe.src = ''; // Limpiar el iframe
+        currentPdfUrl = '';
+    }
+    
+    // Eventos para cerrar el modal
+    pdfCloseBtn.addEventListener('click', closePdfModal);
+    
+    // Cerrar con ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && pdfModal.classList.contains('show')) {
+            closePdfModal();
+        }
+    });
+    
+    // Cerrar haciendo clic fuera del modal
+    pdfModal.addEventListener('click', function(e) {
+        if (e.target === pdfModal) {
+            closePdfModal();
+        }
+    });
+    
+    // Descargar PDF
+    pdfDownloadBtn.addEventListener('click', function() {
+        if (currentPdfUrl) {
+            // Crear un enlace temporal para descargar
+            const link = document.createElement('a');
+            link.href = currentPdfUrl;
+            link.download = 'cv_alejandro_cortes.pdf';
+            link.target = '_blank';
+            
+            // Agregar al DOM, hacer clic y remover
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Efecto visual de descarga
+            this.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        }
+    });
+
+
 });

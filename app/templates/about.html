@@ -45,10 +45,151 @@
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/acortes28/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/acortes28" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="{% static 'files/cv_acortes.pdf' %}" class="social-link" target="_blank"><i class="fas fa-file-pdf"></i> Descargar CV</a>
+                    <a href="https://wa.me/+56944823643?text=Hola%2C%20estoy%20interesado%2Fa%20en%20tu%20perfil" class="social-link" target="_blank" title="Contactar por WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <button class="social-link pdf-viewer-btn" data-pdf-url="{% static 'files/cv_acortes.pdf' %}">
+                        <i class="fas fa-file-pdf"></i> Ver CV
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+// Script para el modal del CV
+document.addEventListener('DOMContentLoaded', function() {
+    const pdfModal = document.getElementById('pdf-modal');
+    const pdfIframe = document.getElementById('pdf-iframe');
+    const pdfDownloadBtn = document.getElementById('pdf-download-btn');
+    const pdfCloseBtn = document.getElementById('pdf-close-btn');
+    const pdfViewerBtn = document.querySelector('.pdf-viewer-btn');
+    const pdfModalTitle = document.querySelector('#pdf-modal h3');
+    const pdfLoading = document.getElementById('pdf-loading');
+    
+    let currentPdfUrl = '';
+    let currentPdfTitle = 'Curriculum Vitae';
+    
+    // Abrir modal del CV
+    pdfViewerBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const pdfUrl = this.getAttribute('data-pdf-url');
+        
+        currentPdfUrl = pdfUrl;
+        
+        // Configurar el título del modal
+        pdfModalTitle.textContent = currentPdfTitle;
+        
+        // Mostrar indicador de carga si existe
+        if (pdfLoading) {
+            pdfLoading.style.display = 'block';
+            pdfIframe.style.display = 'none';
+        }
+        
+        // Configurar el iframe con parámetros para forzar visualización directa
+        const pdfUrlWithParams = pdfUrl + '#toolbar=0&navpanes=0&scrollbar=0&view=FitH';
+        pdfIframe.src = pdfUrlWithParams;
+        
+        // Mostrar el modal
+        pdfModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        // Ocultar indicador de carga cuando el PDF esté listo
+        pdfIframe.onload = function() {
+            if (pdfLoading) {
+                pdfLoading.style.display = 'none';
+            }
+            pdfIframe.style.display = 'block';
+        };
+        
+        // Manejar errores de carga del PDF
+        pdfIframe.onerror = function() {
+            console.log('Error loading PDF, trying alternative method');
+            if (pdfLoading) {
+                pdfLoading.style.display = 'none';
+            }
+            // Fallback: abrir en nueva pestaña
+            window.open(pdfUrl, '_blank');
+            closePdfModal();
+        };
+    });
+    
+    // Cerrar modal del CV
+    function closePdfModal() {
+        pdfModal.classList.remove('show');
+        document.body.style.overflow = '';
+        pdfIframe.src = '';
+        pdfIframe.style.display = 'block';
+        if (pdfLoading) {
+            pdfLoading.style.display = 'none';
+        }
+        currentPdfUrl = '';
+    }
+    
+    // Eventos para cerrar el modal del CV
+    pdfCloseBtn.addEventListener('click', closePdfModal);
+    
+    // Cerrar con ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && pdfModal.classList.contains('show')) {
+            closePdfModal();
+        }
+    });
+    
+    // Cerrar haciendo clic fuera del modal
+    pdfModal.addEventListener('click', function(e) {
+        if (e.target === pdfModal) {
+            closePdfModal();
+        }
+    });
+    
+    // Descargar CV
+    pdfDownloadBtn.addEventListener('click', function() {
+        if (currentPdfUrl) {
+            const link = document.createElement('a');
+            link.href = currentPdfUrl;
+            link.download = 'cv_alejandro_cortes.pdf';
+            link.target = '_blank';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            this.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        }
+    });
+});
+</script>
+
+{% endblock %}
+
+{% block modal %}
+<!-- Modal para visualizar PDF -->
+<div id="pdf-modal" class="pdf-modal">
+    <div class="pdf-modal-content">
+        <div class="pdf-modal-header">
+            <h3>Curriculum Vitae</h3>
+            <div class="pdf-modal-actions">
+                <button class="pdf-download-btn" id="pdf-download-btn" title="Descargar PDF">
+                    <i class="fas fa-download"></i>
+                </button>
+                <button class="pdf-close-btn" id="pdf-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="pdf-modal-body">
+            <div id="pdf-loading" style="display: none; text-align: center; padding: 50px; color: var(--text-color);">
+                <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 20px;"></i>
+                <p>Cargando PDF...</p>
+            </div>
+            <iframe id="pdf-iframe" src="" frameborder="0" type="application/pdf"></iframe>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1306,24 +1306,24 @@ footer::before {
 /* Estilos para el modal de PDF */
 .pdf-modal {
     display: none;
-    position: fixed;
-    z-index: 2000;
     left: 0;
     top: 0;
-    width: 100vw;
-    height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     animation: fadeIn 0.3s ease-out;
+}
+
+/* .pdf-modal.show {
+    position: fixed;
+    z-index: 2000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-}
-
-.pdf-modal.show {
-    display: flex;
-}
+} */
 
 .pdf-modal-content {
     background: var(--card-bg);
@@ -1443,28 +1443,6 @@ footer::before {
     border-color: var(--primary-color);
 }
 
-/* Estilos específicos para el modal de certificaciones */
-#cert-modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    animation: fadeIn 0.3s ease-out;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-#cert-modal.show {
-    display: flex;
-}
-
 /* Animaciones para el modal */
 @keyframes fadeIn {
     from {
@@ -1510,8 +1488,7 @@ footer::before {
 
 /* Responsive para el modal */
 @media (max-width: 768px) {
-    .pdf-modal.show,
-    #cert-modal.show {
+    .pdf-modal.show {
         padding: 10px;
     }
     

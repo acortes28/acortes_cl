@@ -21,6 +21,7 @@
                 <li><a href="{% url 'about' %}" class="nav-link">Quién Soy</a></li>
                 <li><a href="{% url 'experience' %}" class="nav-link">Experiencia</a></li>
                 <li><a href="{% url 'skills' %}" class="nav-link">Habilidades</a></li>
+                <li><a href="{% url 'personal_projects' %}" class="nav-link">Proyectos personales</a></li>
                 <li><a href="{% url 'contact' %}" class="nav-link">Contáctame</a></li>
             </ul>
             <button id="theme-toggle" class="theme-toggle">
@@ -29,6 +30,8 @@
             </button>
         </nav>
     </header>
+    {% block modal %}
+    {% endblock %}
 
     <main class="main-content">
         {% block content %}
