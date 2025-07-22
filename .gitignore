@@ -38,3 +38,8 @@ coverage.xml
 # .vscode/         # VS Code
 # *.sublime-workspace # Sublime Text
 # *.sublime-project
+
+
+#logs
+*.log
+logs/django.log
