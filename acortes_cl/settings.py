@@ -10,8 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Cargar variables de entorno
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,18 +30,30 @@ SECRET_KEY = 'django-insecure-t!3t98^#cma39bk0n0ff_%)zl*h=c29s34@9q=c@566-bjhvjm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']#['0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['*'] #['0.0.0.0', '127.0.0.1']
 
 
 # Configuración de email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Ej: smtp.gmail.com
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'acortes.cl@gmail.com'
-EMAIL_HOST_PASSWORD = 'qrqs phvv evee qkf'
-DEFAULT_FROM_EMAIL = 'alejandro.cortes.v28@gmail.com'
-CONTACT_EMAIL = 'alejandro.cortes.v28@gmail.com'
+if DEBUG:
+    # En desarrollo, usar backend de consola para evitar problemas de credenciales
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_HOST = 'localhost'
+    EMAIL_PORT = 1025
+    EMAIL_USE_TLS = False
+    EMAIL_HOST_USER = 'alejandro.cortes.v28@gmail.com'
+    EMAIL_HOST_PASSWORD = 'qrqs phvv evee qkf'
+    DEFAULT_FROM_EMAIL = 'noreply@localhost'
+    CONTACT_EMAIL = 'alejandro.cortes.28@live.com'
+else:
+    # En producción, usar SMTP real
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+    EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+    EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'alejandro.cortes.v28@gmail.com')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+    DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'alejandro.cortes.v28@gmail.com')
+    CONTACT_EMAIL = os.getenv('CONTACT_EMAIL', 'alejandro.cortes.v28@gmail.com')
 
 # Application definition
 
@@ -146,3 +163,44 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Para producción
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración de Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'django.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'app': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

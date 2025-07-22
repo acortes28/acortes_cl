@@ -1,0 +1,145 @@
+INFO 2025-07-19 22:42:55,357 autoreload 2830 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 22:42:58,271 basehttp 2830 6200209408 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-19 22:42:58,288 basehttp 2830 6217035776 "GET /static/js/darkmode.js HTTP/1.1" 200 6944
+INFO 2025-07-19 22:42:58,289 basehttp 2830 6200209408 "GET /static/css/styles.css HTTP/1.1" 200 36473
+INFO 2025-07-19 22:43:10,600 basehttp 2830 6217035776 "POST /contact/ HTTP/1.1" 200 5737
+ERROR 2025-07-19 22:43:26,488 views 2830 6217035776 Error enviando email desde alejandro.cortes.28@live.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 586e51a60fabf-30101cd81b0sm2218556fac.16 - gsmtp')
+INFO 2025-07-19 22:43:26,494 basehttp 2830 6217035776 "POST /contact/ HTTP/1.1" 200 5394
+INFO 2025-07-19 22:52:28,229 basehttp 2830 6233862144 "GET /personal_projects/ HTTP/1.1" 200 12361
+INFO 2025-07-19 22:52:28,255 basehttp 2830 6250688512 "GET /static/js/darkmode.js HTTP/1.1" 200 6944
+INFO 2025-07-19 22:52:28,256 basehttp 2830 6233862144 "GET /static/css/styles.css HTTP/1.1" 200 36473
+WARNING 2025-07-19 22:52:28,366 log 2830 6233862144 Not Found: /favicon.ico
+WARNING 2025-07-19 22:52:28,366 basehttp 2830 6233862144 "GET /favicon.ico HTTP/1.1" 404 3934
+INFO 2025-07-19 22:52:30,786 basehttp 2830 6233862144 "GET /contact/ HTTP/1.1" 200 5056
+ERROR 2025-07-19 22:53:47,673 views 2830 6233862144 Error enviando email desde alejandro.cortes.28@live.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5614622812f47-41fd498d6d3sm1577263b6e.26 - gsmtp')
+INFO 2025-07-19 22:53:47,680 basehttp 2830 6233862144 "POST /contact/ HTTP/1.1" 200 5394
+ERROR 2025-07-19 22:55:19,690 views 2830 6233862144 Error enviando email desde alejandro.cortes.28@live.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 006d021491bc7-615bcdbbcdfsm1062619eaf.31 - gsmtp')
+INFO 2025-07-19 22:55:19,698 basehttp 2830 6233862144 "POST /contact/ HTTP/1.1" 200 5394
+INFO 2025-07-19 22:55:24,681 basehttp 2830 6233862144 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-19 22:55:25,800 basehttp 2830 6233862144 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-19 22:55:27,797 basehttp 2830 6233862144 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-19 22:55:27,825 basehttp 2830 6250688512 "GET /static/js/darkmode.js HTTP/1.1" 200 6944
+INFO 2025-07-19 22:55:27,825 basehttp 2830 6233862144 "GET /static/css/styles.css HTTP/1.1" 200 36473
+WARNING 2025-07-19 22:55:28,010 log 2830 6250688512 Not Found: /favicon.ico
+WARNING 2025-07-19 22:55:28,011 basehttp 2830 6250688512 "GET /favicon.ico HTTP/1.1" 404 3934
+ERROR 2025-07-19 22:56:01,053 views 2830 6250688512 Error enviando email desde alejandro.cortes.28@live.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 586e51a60fabf-3010179237bsm2223372fac.2 - gsmtp')
+INFO 2025-07-19 22:56:01,055 basehttp 2830 6250688512 "POST /contact/ HTTP/1.1" 200 5394
+INFO 2025-07-19 22:59:34,668 autoreload 4386 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 22:59:37,135 basehttp 4386 6126956544 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-19 22:59:37,156 basehttp 4386 6126956544 "GET /static/js/darkmode.js HTTP/1.1" 200 6944
+INFO 2025-07-19 22:59:37,156 basehttp 4386 6143782912 "GET /static/css/styles.css HTTP/1.1" 200 36473
+WARNING 2025-07-19 22:59:37,261 log 4386 6143782912 Not Found: /favicon.ico
+WARNING 2025-07-19 22:59:37,261 basehttp 4386 6143782912 "GET /favicon.ico HTTP/1.1" 404 4204
+INFO 2025-07-19 22:59:39,080 basehttp 4386 6143782912 "GET /personal_projects/ HTTP/1.1" 200 12361
+INFO 2025-07-19 22:59:40,146 basehttp 4386 6143782912 "GET /contact/ HTTP/1.1" 200 5056
+WARNING 2025-07-19 22:59:46,448 log 4386 6143782912 Not Found: /test-mail
+WARNING 2025-07-19 22:59:46,449 basehttp 4386 6143782912 "GET /test-mail HTTP/1.1" 404 4198
+INFO 2025-07-19 23:00:01,111 basehttp 4386 6143782912 "GET /test-email HTTP/1.1" 301 0
+INFO 2025-07-19 23:00:03,291 basehttp 4386 6126956544 "GET /test-email/ HTTP/1.1" 200 538
+INFO 2025-07-19 23:02:47,625 autoreload 4910 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:02:49,124 basehttp 4910 6137933824 "GET /configure-gmail/ HTTP/1.1" 200 6124
+INFO 2025-07-19 23:04:06,141 autoreload 5184 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:04:08,074 basehttp 5184 6195884032 "GET /configure-gmail/ HTTP/1.1" 200 6124
+INFO 2025-07-19 23:04:09,424 basehttp 5184 6195884032 "GET /contact/ HTTP/1.1" 200 5056
+ERROR 2025-07-19 23:04:21,396 views 5184 6195884032 Error enviando email desde alejandro.cortes.28@live.com: Configuración de email incompleta - verifica EMAIL_HOST_USER y EMAIL_HOST_PASSWORD
+INFO 2025-07-19 23:04:21,398 basehttp 5184 6195884032 "POST /contact/ HTTP/1.1" 200 5470
+INFO 2025-07-19 23:04:40,892 basehttp 5184 6195884032 "GET /configure-gmail/ HTTP/1.1" 200 6124
+INFO 2025-07-19 23:04:41,387 basehttp 5184 6195884032 "GET /configure-gmail/ HTTP/1.1" 200 6124
+INFO 2025-07-19 23:07:00,447 autoreload 5184 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/acortes_cl/settings.py changed, reloading.
+INFO 2025-07-19 23:07:00,796 autoreload 5318 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:07:04,149 basehttp 5318 6189838336 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-19 23:07:16,979 views 5318 6189838336 Intentando enviar email desde alejandro.cortes.28@live.com a admin@localhost
+INFO 2025-07-19 23:07:16,984 views 5318 6189838336 Email enviado exitosamente desde alejandro.cortes.28@live.com a admin@localhost
+INFO 2025-07-19 23:07:16,986 basehttp 5318 6189838336 "POST /contact/ HTTP/1.1" 200 5346
+INFO 2025-07-19 23:08:05,816 autoreload 5318 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/app/views.py changed, reloading.
+INFO 2025-07-19 23:08:06,135 autoreload 5379 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:08:12,266 autoreload 5379 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/app/urls.py changed, reloading.
+INFO 2025-07-19 23:08:12,541 autoreload 5392 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:08:23,709 autoreload 5392 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/app/views.py changed, reloading.
+INFO 2025-07-19 23:08:23,928 autoreload 5409 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:08:29,060 autoreload 5409 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/app/views.py changed, reloading.
+INFO 2025-07-19 23:08:29,268 autoreload 5418 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:08:39,447 autoreload 5418 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/acortes_cl/settings.py changed, reloading.
+INFO 2025-07-19 23:08:39,738 autoreload 5435 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:08:48,904 autoreload 5435 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/acortes_cl/settings.py changed, reloading.
+INFO 2025-07-19 23:08:49,108 autoreload 5448 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:08:51,199 autoreload 5448 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/acortes_cl/settings.py changed, reloading.
+INFO 2025-07-19 23:08:51,404 autoreload 5460 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:09:41,753 views 5460 6171865088 Intentando enviar email desde alejandro.cortes.28@live.com a admin@localhost
+INFO 2025-07-19 23:09:41,759 views 5460 6171865088 Email enviado exitosamente desde alejandro.cortes.28@live.com a admin@localhost
+INFO 2025-07-19 23:09:41,773 basehttp 5460 6171865088 "POST /contact/ HTTP/1.1" 200 5346
+INFO 2025-07-19 23:09:41,788 basehttp 5460 6171865088 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-07-19 23:10:26,354 autoreload 5460 8480524352 /Users/imitcl96/Tecnología/Repositorio/acortes_cl/acortes_cl/acortes_cl/settings.py changed, reloading.
+INFO 2025-07-19 23:10:26,766 autoreload 5547 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-19 23:10:30,367 basehttp 5547 6135476224 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-19 23:10:31,571 basehttp 5547 6135476224 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-19 23:10:47,010 views 5547 6135476224 Intentando enviar email desde diaz.mitzi@gmail.com a alejandro.cortes.28@live.com
+INFO 2025-07-19 23:10:47,018 views 5547 6135476224 Email enviado exitosamente desde diaz.mitzi@gmail.com a alejandro.cortes.28@live.com
+INFO 2025-07-19 23:10:47,019 basehttp 5547 6135476224 "POST /contact/ HTTP/1.1" 200 5346
+INFO 2025-07-20 11:16:18,769 basehttp 5547 6135476224 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-20 11:16:18,792 basehttp 5547 6152302592 "GET /static/js/darkmode.js HTTP/1.1" 304 0
+INFO 2025-07-20 11:16:18,793 basehttp 5547 6169128960 "GET /static/images/front_img.jpeg HTTP/1.1" 304 0
+INFO 2025-07-20 11:16:18,794 basehttp 5547 6135476224 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-07-20 11:16:28,036 basehttp 5547 6135476224 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-20 11:16:28,056 basehttp 5547 6135476224 "GET /static/images/profile.jpeg HTTP/1.1" 304 0
+INFO 2025-07-20 11:16:30,379 basehttp 5547 6135476224 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-20 11:16:49,755 basehttp 5547 6135476224 "GET /skills/ HTTP/1.1" 200 15921
+INFO 2025-07-20 11:16:55,891 basehttp 5547 6135476224 "GET /static/files/canvas.pdf HTTP/1.1" 304 0
+INFO 2025-07-20 11:16:58,757 basehttp 5547 6135476224 "GET /static/files/problem_solving.pdf HTTP/1.1" 304 0
+INFO 2025-07-20 11:17:01,069 basehttp 5547 6135476224 "GET /static/files/ds_ba.pdf HTTP/1.1" 304 0
+INFO 2025-07-20 11:17:04,256 basehttp 5547 6135476224 "GET /personal_projects/ HTTP/1.1" 200 12361
+INFO 2025-07-20 11:17:28,485 basehttp 5547 6135476224 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-20 11:17:38,670 basehttp 5547 6135476224 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-20 11:17:40,065 basehttp 5547 6135476224 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-20 11:45:32,491 basehttp 5547 6135476224 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-20 11:45:35,178 basehttp 5547 6135476224 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-20 11:45:41,821 basehttp 5547 6135476224 "GET /static/files/cv_acortes.pdf HTTP/1.1" 304 0
+INFO 2025-07-20 11:46:00,829 basehttp 5547 6135476224 "GET /skills/ HTTP/1.1" 200 15921
+INFO 2025-07-20 11:46:02,184 basehttp 5547 6135476224 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-20 11:46:03,185 basehttp 5547 6135476224 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-20 17:03:51,074 basehttp 5547 6135476224 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-20 17:03:51,086 basehttp 5547 6135476224 "GET /static/css/styles.css HTTP/1.1" 304 0
+INFO 2025-07-20 17:03:51,086 basehttp 5547 6152302592 "GET /static/images/front_img.jpeg HTTP/1.1" 304 0
+INFO 2025-07-20 17:03:51,087 basehttp 5547 6169128960 "GET /static/js/darkmode.js HTTP/1.1" 304 0
+INFO 2025-07-20 17:04:06,776 basehttp 5547 6135476224 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-20 18:22:08,722 basehttp 5547 6135476224 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-20 18:22:12,577 basehttp 5547 6135476224 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-20 18:22:12,597 basehttp 5547 6135476224 "GET /static/images/profile.jpeg HTTP/1.1" 304 0
+INFO 2025-07-20 18:55:38,627 basehttp 5547 6135476224 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-20 18:55:39,741 basehttp 5547 6135476224 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-20 18:55:40,938 basehttp 5547 6135476224 "GET /skills/ HTTP/1.1" 200 15921
+INFO 2025-07-20 18:55:42,490 basehttp 5547 6135476224 "GET /personal_projects/ HTTP/1.1" 200 12361
+INFO 2025-07-20 18:56:08,315 basehttp 5547 6135476224 "GET /personal_projects/ HTTP/1.1" 200 12361
+INFO 2025-07-20 18:56:10,154 basehttp 5547 6135476224 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-20 18:56:12,011 basehttp 5547 6135476224 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-20 18:56:12,940 basehttp 5547 6135476224 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-20 18:56:14,859 basehttp 5547 6135476224 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-21 19:04:38,022 autoreload 4883 8480524352 Watching for file changes with StatReloader
+INFO 2025-07-21 19:04:40,070 basehttp 4883 6170800128 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-21 19:04:40,179 basehttp 4883 12901707776 "GET /static/images/front_img.jpeg HTTP/1.1" 304 0
+INFO 2025-07-21 19:04:40,180 basehttp 4883 12918534144 "GET /static/js/darkmode.js HTTP/1.1" 304 0
+INFO 2025-07-21 19:04:40,181 basehttp 4883 6170800128 "GET /static/css/styles.css HTTP/1.1" 200 36473
+WARNING 2025-07-21 19:04:40,333 log 4883 6170800128 Not Found: /favicon.ico
+WARNING 2025-07-21 19:04:40,334 basehttp 4883 6170800128 "GET /favicon.ico HTTP/1.1" 404 3934
+INFO 2025-07-21 19:04:55,412 basehttp 4883 6170800128 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-21 19:04:55,427 basehttp 4883 6170800128 "GET /static/images/profile.jpeg HTTP/1.1" 304 0
+INFO 2025-07-21 19:04:59,592 basehttp 4883 6170800128 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-21 19:05:06,279 basehttp 4883 6170800128 "GET /skills/ HTTP/1.1" 200 15921
+INFO 2025-07-21 19:05:11,418 basehttp 4883 6170800128 "GET /static/files/uml_ba.pdf HTTP/1.1" 200 191632
+INFO 2025-07-21 19:05:13,853 basehttp 4883 6170800128 "GET /static/files/canvas.pdf HTTP/1.1" 200 453652
+INFO 2025-07-21 19:05:17,734 basehttp 4883 6170800128 "GET /static/files/problem_solving.pdf HTTP/1.1" 200 163585
+INFO 2025-07-21 19:05:21,989 basehttp 4883 6170800128 "GET /personal_projects/ HTTP/1.1" 200 12361
+INFO 2025-07-21 19:05:34,281 basehttp 4883 6170800128 "GET /contact/ HTTP/1.1" 200 5056
+INFO 2025-07-21 19:05:39,103 basehttp 4883 6170800128 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-22 12:59:28,435 basehttp 4883 6170800128 "GET / HTTP/1.1" 200 3702
+INFO 2025-07-22 12:59:28,493 basehttp 4883 12918534144 "GET /static/images/front_img.jpeg HTTP/1.1" 304 0
+INFO 2025-07-22 12:59:28,494 basehttp 4883 12901707776 "GET /static/js/darkmode.js HTTP/1.1" 304 0
+INFO 2025-07-22 12:59:28,494 basehttp 4883 6170800128 "GET /static/css/styles.css HTTP/1.1" 304 0
+WARNING 2025-07-22 12:59:29,147 log 4883 6170800128 Not Found: /favicon.ico
+WARNING 2025-07-22 12:59:29,148 basehttp 4883 6170800128 "GET /favicon.ico HTTP/1.1" 404 3934
+INFO 2025-07-22 12:59:34,406 basehttp 4883 6170800128 "GET /about/ HTTP/1.1" 200 9038
+INFO 2025-07-22 12:59:34,435 basehttp 4883 6170800128 "GET /static/images/profile.jpeg HTTP/1.1" 304 0
+INFO 2025-07-22 12:59:35,296 basehttp 4883 6170800128 "GET /experience/ HTTP/1.1" 200 13225
+INFO 2025-07-22 12:59:36,312 basehttp 4883 6170800128 "GET /skills/ HTTP/1.1" 200 15921
+INFO 2025-07-22 12:59:36,860 basehttp 4883 6170800128 "GET /personal_projects/ HTTP/1.1" 200 12361
+INFO 2025-07-22 13:09:24,435 basehttp 4883 6170800128 "GET / HTTP/1.1" 200 3702
