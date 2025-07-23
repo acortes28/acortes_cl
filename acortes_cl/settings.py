@@ -42,10 +42,10 @@ if DEBUG:
     EMAIL_HOST = 'localhost'
     EMAIL_PORT = 1025
     EMAIL_USE_TLS = False
-    EMAIL_HOST_USER = 'alejandro.cortes.v28@gmail.com'
-    EMAIL_HOST_PASSWORD = 'qrqs phvv evee qkf'
-    DEFAULT_FROM_EMAIL = 'noreply@localhost'
-    CONTACT_EMAIL = 'alejandro.cortes.28@live.com'
+    EMAIL_HOST_USER = '*'
+    EMAIL_HOST_PASSWORD = '*'
+    DEFAULT_FROM_EMAIL = '*'
+    CONTACT_EMAIL = '*'
 else:
     # En producción, usar SMTP real
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
