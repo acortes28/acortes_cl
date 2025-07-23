@@ -19,6 +19,12 @@ ENV/
 .env/
 .venv/
 
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -33,13 +39,37 @@ coverage.xml
 # Jupyter Notebook
 .ipynb_checkpoints/
 
-# IDE-specific files (optional - uncomment if using these IDEs)
-# .idea/           # PyCharm
-# .vscode/         # VS Code
-# *.sublime-workspace # Sublime Text
-# *.sublime-project
+# IDE-specific files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
 
-
-#logs
+# Django
 *.log
-logs/django.log
+logs/
+staticfiles/
+media/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Database
+*.sqlite3
+*.db
+
+# Backup files
+*.bak
+*.backup
+*.swp
+*.swo

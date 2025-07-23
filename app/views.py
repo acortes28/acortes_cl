@@ -36,7 +36,7 @@ def contact(request):
             
             # Enviar email
             email_message = f"""
-            Nuevo mensaje de contacto desde tu sitio web:
+            Nuevo mensaje de contacto desde acortesv.cl:
             
             Nombre: {name}
             Email: {email}
@@ -61,6 +61,9 @@ def contact(request):
                 # Log de intento de envío
                 logger.info(f"Intentando enviar email desde {email} a {settings.CONTACT_EMAIL}")
                 
+
+
+
                 # Enviar email
                 result = send_mail(
                     subject=f"Nuevo mensaje de contacto: {subject}",
