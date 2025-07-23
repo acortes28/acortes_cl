@@ -32,7 +32,7 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 print("DEBUG: ", DEBUG)
 
-ALLOWED_HOSTS = ['acortesv.cl', 'www.acortesv.cl', 'localhost', '127.0.0.1'] #['0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['149.50.143.224', 'acortesv.cl', 'www.acortesv.cl', 'localhost', '127.0.0.1'] #['0.0.0.0', '127.0.0.1']
 
 
 # Configuración de email
@@ -166,6 +166,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Para producción
 
 # Configuración de WhiteNoise para archivos estáticos
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
