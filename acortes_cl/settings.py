@@ -167,7 +167,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Para producción
 # Configuración de WhiteNoise para archivos estáticos
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 # Default primary key field type
