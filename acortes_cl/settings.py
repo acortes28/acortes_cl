@@ -32,7 +32,7 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 print("DEBUG: ", DEBUG)
 
-ALLOWED_HOSTS = ['149.50.143.224', 'acortesv.cl', 'www.acortesv.cl', 'localhost', '127.0.0.1'] #['0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['149.50.150.195', 'acortesv.cl', 'www.acortesv.cl', 'localhost', '127.0.0.1'] #['0.0.0.0', '127.0.0.1']
 
 
 # Configuración de email
