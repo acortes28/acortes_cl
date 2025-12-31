@@ -48,7 +48,11 @@ if DEBUG:
     CONTACT_EMAIL = '*'
 else:
     # En producción, usar SMTP real
-    EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+    EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'sendgrid_backend.SendgridBackend')
+
+    SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
     EMAIL_HOST = os.getenv('EMAIL_HOST')
     EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
     EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
