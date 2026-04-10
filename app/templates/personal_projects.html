@@ -12,7 +12,15 @@
             <!-- Panel lateral con tabs -->
             <div class="sidebar">
                 <div class="sidebar-tabs">
-                    <button class="sidebar-tab active" data-project="enrolamiento">
+                    <button class="sidebar-tab active" data-project="artemis">
+                        <i class="fas fa-book"></i>
+                        <span>Sistema de planificación pedagógica con IA</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="lms-gryphos">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Learning Mangement System Gryphos</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="enrolamiento">
                         <i class="fas fa-coffee"></i>
                         <span>Punto de venta para cafeterías</span>
                     </button>
@@ -33,8 +41,104 @@
 
             <!-- Contenido principal -->
             <div class="main-content">
-                <!-- Punto de venta para cafeterías -->
-                <div class="project-content active" id="enrolamiento">
+                <!-- Sistema de planificación pedagógica con IA -->
+                <div class="project-content active" id="artemis">
+                    <div class="project-header">
+                        <h2>Sistema de planificación pedagógica con IA</h2>
+                        <div class="project-meta">
+                            <span class="company">En Curso</span>
+                            <span class="period">2026</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>SaaS de planificación pedagógica para docentes de educación básica y media en Chile para establecimientos apoyado en Inteligencia Artificial para la automatización de planificación de clases.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Implementadas</h3>
+                        <ul>
+                            <li><strong>Gestión de entidades:</strong> Panel de gestión para personas, usuarios, cursos, secciones de cursos y asignaturas.</li>
+                            <li><strong>Gestión académica:</strong> Gestión de curriculos nacionales, horarios, asignaturas, objetivos de aprendizaje, actitudes y habilidades.</li>
+                            <li><strong>Planificación de clases:</strong> Gestión de la planificación de clases por etapa de clase con su actividad y recurso por cada una.</li>
+                            <li><strong>Sección de comentarios por planificación:</strong> Cada clase planificada cuenta con una sección de comentarios para facilitar el seguimiento y retroalimentación.</li>
+                            <li><strong>Curriculos Nacionales almacenados:</strong> Los curriculos nacionales son almacenados en una base de datos vectorial para la lectura eficiente por parte del LLM.</li>
+                            <li><strong>Automatización de la planificación:</strong> Automatización con IA de la planificación de clases de manera individual o semestral.</li>
+                            <li><strong>Flujo de aprobación de UTP:</strong> Flujo de trabajo para la aprobación de las clases planificadas por parte de UTP.</li>
+                            <li><strong>Notificaciones en tiempo real:</strong> Notificaciones automáticas a los docentes acerca de la aprobación, rechazo o comentarios de sus clases planificadas.</li>
+                            <li><strong>Reportes y análisis:</strong> Generación de reportes y análisis de la planificación y ejecución de las clases por docente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Nginx</span>
+                            <span class="tech-tag">Langchain</span>
+                            <span class="tech-tag">Ollama</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://sistemaartemis.cl" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ir a página web
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="project-content" id="lms-gryphos">
+                    <div class="project-header">
+                        <h2>Learning Management System Gryphos</h2>
+                        <div class="project-meta">
+                            <span class="company">Finalizado</span>
+                            <span class="period">2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Creación de un LMS para la gestión y ejecución de capacitaciones para OTEC.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Implementadas</h3>
+                        <ul>
+                            <li><strong>Gestión de cursos:</strong> Gestión de cursos, contenidos y docentes a través de la plataforma con privilegio de administrador.</li>
+                            <li><strong>Flujo de inscripción:</strong> Flujo de inscripción y gestión de matrículas para los usuarios a través de la plataforma web.</li>
+                            <li><strong>Integración a plataforma de correos:</strong> Gestión de correos creados automáticamente en la inscripción con Mailcow.</li>
+                            <li><strong>Integración a plataforma de videollamadas:</strong> Gestión de videollamadas para la interacción en tiempo real entre estudiantes y docentes en la ejecución de clases.</li>
+                            <li><strong>Foro académico:</strong> Espacio para discusiones y colaboración entre estudiantes/capacitados y docentes.</li>
+                            <li><strong>Repositorio de Recursos:</strong> Repositorio con material docente y recursos de aprendizaje.</li>
+                            <li><strong>Sistema de rúbricas:</strong> Creación de rúbricas para la evaluación transparente del estudiante</li>
+                            <li><strong>Tickets de soporte:</strong> Sistema para gestionar y resolver consultas de los usuarios de índole académica y técnica.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Nginx</span>
+                            <span class="tech-tag">Jitsi</span>
+                            <span class="tech-tag">Mailcow</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/acortes28/gryphos_cl" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ver Repositorio
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="project-content" id="enrolamiento">
                     <div class="project-header">
                         <h2>Punto de venta para cafeterías</h2>
                         <div class="project-meta">
