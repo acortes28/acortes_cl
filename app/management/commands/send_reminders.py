@@ -4,8 +4,11 @@ Comando: python manage.py send_reminders
 Envía recordatorios por correo a todas las reuniones pendientes o confirmadas
 que ocurren en las próximas 23–25 horas.
 
+Para pruebas, usa --force para ignorar la ventana de tiempo:
+    python manage.py send_reminders --force
+
 Configurar cron (en el servidor) para ejecutar cada hora:
-    0 * * * * /ruta/venv/bin/python /ruta/proyecto/manage.py send_reminders >> /ruta/proyecto/logs/reminders.log 2>&1
+    0 * * * * /home/acortes/repositorio/acortes_cl/venv/bin/python /home/acortes/repositorio/acortes_cl/manage.py send_reminders >> /home/acortes/repositorio/acortes_cl/logs/reminders.log 2>&1
 """
 from django.core.management.base import BaseCommand
 from django.core.mail import send_mail
@@ -33,28 +36,56 @@ def _format_date_es(d):
 class Command(BaseCommand):
     help = 'Envía recordatorios de confirmación a reuniones en las próximas 24 horas'
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--force',
+            action='store_true',
+            help='Enviar recordatorio ignorando la ventana de tiempo (para pruebas)',
+        )
+
     def handle(self, *args, **options):
+        force = options['force']
         tz = pytz.timezone(settings.TIME_ZONE)
         now = datetime.now(tz)
         window_start = now + timedelta(hours=23)
-        window_end = now + timedelta(hours=25)
+        window_end   = now + timedelta(hours=25)
+
+        self.stdout.write(f"Ahora:   {now.strftime('%Y-%m-%d %H:%M %Z')}")
+        self.stdout.write(
+            f"Ventana: {window_start.strftime('%Y-%m-%d %H:%M')} → "
+            f"{window_end.strftime('%Y-%m-%d %H:%M')}"
+        )
+        if force:
+            self.stdout.write(self.style.WARNING("  [--force] Ventana de tiempo ignorada"))
 
         pending = Appointment.objects.filter(
             status__in=[Appointment.STATUS_PENDING, Appointment.STATUS_CONFIRMED],
             reminder_sent=False,
         )
 
+        self.stdout.write(f"Reuniones pendientes sin recordatorio: {pending.count()}")
+
+        if not pending.exists():
+            self.stdout.write("  (ninguna encontrada)")
+            return
+
         sent = 0
         site_url = getattr(settings, 'SITE_URL', 'https://acortesv.cl')
 
         for appt in pending:
             appt_dt = tz.localize(datetime.combine(appt.date, appt.time))
-            if not (window_start <= appt_dt <= window_end):
+            in_window = window_start <= appt_dt <= window_end
+
+            if not force and not in_window:
+                self.stdout.write(
+                    f"  — {appt.name} ({appt.date} {appt.time.strftime('%H:%M')}) "
+                    f"fuera de ventana [{appt_dt.strftime('%Y-%m-%d %H:%M')}] → ignorada"
+                )
                 continue
 
             confirm_url = f"{site_url}/agendar/confirmar/{appt.confirmation_token}/"
-            cancel_url = f"{site_url}/agendar/cancelar/{appt.confirmation_token}/"
-            date_str = _format_date_es(appt.date).capitalize()
+            cancel_url  = f"{site_url}/agendar/cancelar/{appt.confirmation_token}/"
+            date_str    = _format_date_es(appt.date).capitalize()
 
             subject = "Recordatorio: Tu reunión con Alejandro Cortés es mañana"
 
