@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Asistencia confirmada{% endblock %}
+
+{% block content %}
+<section class="booking-result-section">
+    <div class="container">
+        <div class="booking-result-card">
+
+            <div class="result-icon result-icon--confirmed">
+                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <h1>¡Asistencia confirmada!</h1>
+            <p class="result-subtitle">
+                Tu asistencia ha sido registrada. Te esperamos en la reunión.
+            </p>
+
+            <div class="appt-details">
+                <div class="appt-detail">
+                    <i class="fas fa-user"></i>
+                    <span>{{ appointment.name }}</span>
+                </div>
+                <div class="appt-detail">
+                    <i class="fas fa-calendar"></i>
+                    <span>{{ date_formatted }}</span>
+                </div>
+                <div class="appt-detail">
+                    <i class="fas fa-clock"></i>
+                    <span>{{ appointment.time|time:"H:i" }} hrs</span>
+                </div>
+            </div>
+
+            <a href="{% url 'index' %}" class="btn btn-primary">Volver al inicio</a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

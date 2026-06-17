@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Servicios{% endblock %}
+
+{% block content %}
+<section class="services-hero">
+    <div class="container">
+        <div class="services-hero-content">
+            <p class="services-hero-label">Consultoría Profesional</p>
+            <h1>¿En qué puedo ayudarte?</h1>
+            <p class="services-hero-subtitle">Combino experiencia en operaciones, tecnología y metodología para entregar soluciones concretas a los desafíos de tu negocio.</p>
+            <a href="{% url 'agendar' %}" class="btn btn-primary">Agenda una reunión</a>
+        </div>
+    </div>
+</section>
+
+<section class="services-list-section">
+    <div class="container">
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <div class="service-body">
+                    <h3>Análisis y Optimización de Procesos</h3>
+                    <p>Identifico cuellos de botella, diseño el flujo óptimo y documento los procesos con estándares internacionales BPMN 2.0.</p>
+                    <ul class="service-includes">
+                        <li><i class="fas fa-check-circle"></i> Levantamiento AS-IS con entrevistas y observación</li>
+                        <li><i class="fas fa-check-circle"></i> Modelamiento BPMN 2.0 en Bizagi</li>
+                        <li><i class="fas fa-check-circle"></i> Propuesta TO-BE con mejoras priorizadas</li>
+                        <li><i class="fas fa-check-circle"></i> Documentación funcional y casos de uso</li>
+                    </ul>
+                    <a href="{% url 'agendar' %}" class="service-cta-link">Consultar <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="service-body">
+                    <h3>Automatización de Procesos</h3>
+                    <p>Elimino tareas manuales y repetitivas en tu operación usando Python, RPA y automatización de reportería.</p>
+                    <ul class="service-includes">
+                        <li><i class="fas fa-check-circle"></i> Robots RPA con Python y Selenium</li>
+                        <li><i class="fas fa-check-circle"></i> Automatización de reportes Excel/Power BI</li>
+                        <li><i class="fas fa-check-circle"></i> Integración entre sistemas vía scripts</li>
+                        <li><i class="fas fa-check-circle"></i> Generación automática de documentos</li>
+                    </ul>
+                    <a href="{% url 'agendar' %}" class="service-cta-link">Consultar <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="service-body">
+                    <h3>Business Analysis para Proyectos TI</h3>
+                    <p>Actúo como puente entre el negocio y el equipo técnico, asegurando que los requerimientos queden bien definidos y alineados al objetivo.</p>
+                    <ul class="service-includes">
+                        <li><i class="fas fa-check-circle"></i> Levantamiento de requerimientos funcionales</li>
+                        <li><i class="fas fa-check-circle"></i> Escritura de historias de usuario</li>
+                        <li><i class="fas fa-check-circle"></i> Gestión de backlog en Jira</li>
+                        <li><i class="fas fa-check-circle"></i> Coordinación con stakeholders y proveedores</li>
+                    </ul>
+                    <a href="{% url 'agendar' %}" class="service-cta-link">Consultar <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="service-body">
+                    <h3>Business Intelligence y Reportería</h3>
+                    <p>Transformo datos operacionales en dashboards accionables y KPIs que permiten tomar decisiones en tiempo real.</p>
+                    <ul class="service-includes">
+                        <li><i class="fas fa-check-circle"></i> Diseño y desarrollo de dashboards en Power BI</li>
+                        <li><i class="fas fa-check-circle"></i> Definición de KPIs operacionales</li>
+                        <li><i class="fas fa-check-circle"></i> Consultas SQL para extracción de datos</li>
+                        <li><i class="fas fa-check-circle"></i> Capacitación al equipo en el uso del dashboard</li>
+                    </ul>
+                    <a href="{% url 'agendar' %}" class="service-cta-link">Consultar <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="methodology-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Cómo trabajo</h2>
+            <p>Un proceso transparente y orientado a entregar valor en cada etapa.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-icon"><i class="fas fa-search"></i></div>
+                <h3>Diagnóstico</h3>
+                <p>Entendemos juntos el problema. Reviso el contexto, los actores involucrados y los objetivos antes de proponer nada.</p>
+            </div>
+            <div class="step-connector">
+                <i class="fas fa-long-arrow-alt-right"></i>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
+                <h3>Análisis y Diseño</h3>
+                <p>Modelo el proceso actual, identifico brechas y diseño la solución. Todo queda documentado y validado antes de avanzar.</p>
+            </div>
+            <div class="step-connector">
+                <i class="fas fa-long-arrow-alt-right"></i>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Entrega</h3>
+                <p>Entrego los artefactos acordados y acompaño al equipo en la adopción del cambio para asegurar resultados.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="industries-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Industrias con las que he trabajado</h2>
+        </div>
+        <div class="industries-grid">
+            <div class="industry-chip">
+                <i class="fas fa-shield-alt"></i>
+                <span>Seguros</span>
+            </div>
+            <div class="industry-chip">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Retail</span>
+            </div>
+            <div class="industry-chip">
+                <i class="fas fa-bolt"></i>
+                <span>Energía</span>
+            </div>
+            <div class="industry-chip">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Educación</span>
+            </div>
+            <div class="industry-chip">
+                <i class="fas fa-cogs"></i>
+                <span>Manufactura</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-final-cta">
+    <div class="container">
+        <div class="final-cta-box">
+            <h2>¿Tienes un desafío en mente?</h2>
+            <p>La primera conversación es sin costo y sin compromiso. Cuéntame qué necesitas y vemos si puedo ayudarte.</p>
+            <div class="final-cta-actions">
+                <a href="{% url 'agendar' %}" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i> Agendar reunión
+                </a>
+                <a href="https://wa.me/+56944823643?text=Hola%2C%20quiero%20consultar%20sobre%20tus%20servicios%20de%20consultor%C3%ADa" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

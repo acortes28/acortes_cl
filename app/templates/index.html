@@ -7,11 +7,11 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <h1>Bienvenido a mi perfil profesional</h1>
-            <p>Explora mi trayectoria, habilidades y experiencia profesional en el mundo de la tecnología</p>
+            <h1>Consultoría en Tecnología y Procesos de Negocio</h1>
+            <p>Ayudo a empresas a optimizar sus operaciones, automatizar procesos y tomar mejores decisiones con datos.</p>
             <div class="hero-cta">
-                <a href="{% url 'about' %}" class="btn btn-primary">Conóceme</a>
-                <a href="{% url 'contact' %}" class="btn btn-secondary">Contáctame</a>
+                <a href="{% url 'services' %}" class="btn btn-primary">Ver Servicios</a>
+                <a href="{% url 'agendar' %}" class="btn btn-secondary">Agéndame</a>
             </div>
         </div>
         <div class="hero-image">
@@ -20,35 +20,54 @@
     </div>
 </section>
 
-<section class="quick-links">
+<section class="metrics-strip">
     <div class="container">
-        <h2>Acceso Rápido</h2>
-        <div class="links-grid">
-            <a href="{% url 'about' %}" class="link-card">
-                <i class="fas fa-user"></i>
-                <h3>Quién Soy</h3>
-                <p>Conoce más sobre mí, mi trayectoria profesional y mis objetivos</p>
-            </a>
-            <a href="{% url 'experience' %}" class="link-card">
-                <i class="fas fa-briefcase"></i>
-                <h3>Experiencia</h3>
-                <p>Mi historial laboral, proyectos destacados y logros profesionales</p>
-            </a>
-            <a href="{% url 'skills' %}" class="link-card">
-                <i class="fas fa-code"></i>
-                <h3>Habilidades</h3>
-                <p>Tecnologías, lenguajes de programación y competencias que domino</p>
-            </a>
-            <a href="{% url 'contact' %}" class="link-card">
-                <i class="fas fa-envelope"></i>
-                <h3>Contacto</h3>
-                <p>Formas de ponerte en contacto conmigo para oportunidades profesionales</p>
-            </a>
-            <a href="{% url 'personal_projects' %}" class="link-card">
-                <i class="fas fa-project-diagram"></i>
-                <h3>Proyectos personales</h3>
-                <p>Proyectos personales que he realizado</p>
-            </a>
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <span class="metric-number">6+</span>
+                <span class="metric-label">Años de experiencia profesional</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-number">23%</span>
+                <span class="metric-label">Reducción de costos operacionales lograda</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-number">4</span>
+                <span class="metric-label">Industrias atendidas</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-number">+10</span>
+                <span class="metric-label">Proyectos entregados</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-services">
+    <div class="container">
+        <div class="home-services-header">
+            <h2>Mis Servicios</h2>
+            <p>Soluciones específicas para los desafíos de tu organización</p>
+        </div>
+        <div class="home-services-grid">
+            <div class="home-service-card">
+                <i class="fas fa-sitemap"></i>
+                <h3>Análisis de Procesos</h3>
+                <p>Levantamiento, modelamiento BPMN y optimización de procesos operacionales con metodología probada.</p>
+            </div>
+            <div class="home-service-card">
+                <i class="fas fa-robot"></i>
+                <h3>Automatización</h3>
+                <p>Robots RPA, automatización de reportería y scripts Python para eliminar tareas manuales repetitivas.</p>
+            </div>
+            <div class="home-service-card">
+                <i class="fas fa-tasks"></i>
+                <h3>Business Analysis</h3>
+                <p>Requerimientos funcionales, historias de usuario y coordinación de proyectos TI en marcos ágiles.</p>
+            </div>
+        </div>
+        <div class="home-services-footer">
+            <a href="{% url 'services' %}" class="btn btn-primary">Ver todos los servicios</a>
         </div>
     </div>
 </section>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Reunión agendada{% endblock %}
+
+{% block content %}
+<section class="booking-result-section">
+    <div class="container">
+        <div class="booking-result-card">
+
+            <div class="result-icon result-icon--success">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+
+            <h1>¡Reunión agendada!</h1>
+            <p class="result-subtitle">
+                Tu solicitud ha sido registrada correctamente. Recibirás un correo de confirmación
+                y un recordatorio con enlace de confirmación 24 horas antes de la reunión.
+            </p>
+
+            <div class="appt-details">
+                <div class="appt-detail">
+                    <i class="fas fa-user"></i>
+                    <span>{{ appointment.name }}</span>
+                </div>
+                <div class="appt-detail">
+                    <i class="fas fa-calendar"></i>
+                    <span>{{ date_formatted }}</span>
+                </div>
+                <div class="appt-detail">
+                    <i class="fas fa-clock"></i>
+                    <span>{{ appointment.time|time:"H:i" }} hrs</span>
+                </div>
+                <div class="appt-detail">
+                    <i class="fas fa-envelope"></i>
+                    <span>{{ appointment.email }}</span>
+                </div>
+            </div>
+
+            <div class="result-note">
+                <i class="fas fa-info-circle"></i>
+                <p>Si no recibes el correo en los próximos minutos, revisa tu carpeta de spam.</p>
+            </div>
+
+            <a href="{% url 'index' %}" class="btn btn-primary">Volver al inicio</a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

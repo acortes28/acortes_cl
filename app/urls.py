@@ -8,4 +8,10 @@ urlpatterns = [
     path('skills/', views.skills, name='skills'),
     path('contact/', views.contact, name='contact'),
     path('personal_projects/', views.personal_projects, name='personal_projects'),
+    path('servicios/', views.services, name='services'),
+    # Agendamiento
+    path('agendar/', views.agendar, name='agendar'),
+    path('agendar/horarios/', views.get_available_slots, name='get_available_slots'),
+    path('agendar/confirmar/<uuid:token>/', views.confirm_appointment, name='confirm_appointment'),
+    path('agendar/cancelar/<uuid:token>/', views.cancel_appointment, name='cancel_appointment'),
 ]

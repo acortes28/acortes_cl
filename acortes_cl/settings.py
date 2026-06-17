@@ -47,19 +47,15 @@ if DEBUG:
     DEFAULT_FROM_EMAIL = '*'
     CONTACT_EMAIL = '*'
 else:
-    # En producción, usar SMTP real
-    EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'sendgrid_backend.SendgridBackend')
-
-    SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
-    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
-
-    EMAIL_HOST = os.getenv('EMAIL_HOST')
-    EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
-    EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
-    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-    DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-    CONTACT_EMAIL = os.getenv('CONTACT_EMAIL')
+    # En producción, usar Gmail (Google Workspace) con contraseña de aplicación
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')          # tu@dominio.com
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # contraseña de aplicación
+    DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')    # Alejandro Cortés <tu@dominio.com>
+    CONTACT_EMAIL = os.getenv('CONTACT_EMAIL')              # tu@dominio.com
 
 
 
@@ -172,6 +168,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Para producción
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+SITE_URL = os.getenv('SITE_URL', 'https://acortesv.cl')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

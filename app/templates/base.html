@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alejandro Cortés V. — Consultoría en análisis de procesos, automatización y Business Analysis. Ingeniero Civil Industrial con más de 6 años de experiencia en Chile.">
+    <meta name="keywords" content="consultoría, análisis de procesos, BPMN, automatización, Business Analysis, Power BI, Python, Santiago Chile">
+    <meta name="author" content="Alejandro Cortés V.">
+    <meta property="og:title" content="Alejandro Cortés V. — Consultoría TI">
+    <meta property="og:description" content="Servicios de consultoría en análisis de procesos, automatización y Business Analysis para empresas en Chile.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://acortesv.cl">
     <title>Alejandro Cortés - {% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
@@ -21,10 +28,11 @@
             </div>
             <ul class="nav-links">
                 <li><a href="{% url 'about' %}" class="nav-link">Quién Soy</a></li>
+                <li><a href="{% url 'services' %}" class="nav-link">Servicios</a></li>
                 <li><a href="{% url 'experience' %}" class="nav-link">Experiencia</a></li>
                 <li><a href="{% url 'skills' %}" class="nav-link">Habilidades</a></li>
-                <li><a href="{% url 'personal_projects' %}" class="nav-link">Proyectos personales</a></li>
-                <li><a href="{% url 'contact' %}" class="nav-link">Contáctame</a></li>
+                <li><a href="{% url 'personal_projects' %}" class="nav-link">Proyectos</a></li>
+                <li><a href="{% url 'agendar' %}" class="nav-link">Agéndame</a></li>
             </ul>
             <button id="theme-toggle" class="theme-toggle">
                 <i class="fas fa-moon"></i>
@@ -41,7 +49,52 @@
     </main>
 
     <footer>
-        <p>&copy; {% now "Y" %} Página creada por Alejandro Cortés V.</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Alejandro Cortés V.</div>
+                <p class="footer-tagline">Consultoría en análisis de procesos,<br>automatización y Business Analysis.</p>
+                <div class="footer-social-icons">
+                    <a href="https://www.linkedin.com/in/acortes28/" target="_blank" class="footer-social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/acortes28" target="_blank" class="footer-social-icon" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://wa.me/+56944823643" target="_blank" class="footer-social-icon" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="{% url 'about' %}">Quién Soy</a></li>
+                    <li><a href="{% url 'services' %}">Servicios</a></li>
+                    <li><a href="{% url 'experience' %}">Experiencia</a></li>
+                    <li><a href="{% url 'skills' %}">Habilidades</a></li>
+                    <li><a href="{% url 'personal_projects' %}">Proyectos</a></li>
+                    <li><a href="{% url 'agendar' %}">Agéndame</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-col-title">Contacto</h4>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@acortesv.cl</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+56 9 4482 3643</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Santiago, Chile</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} Alejandro Cortés V. — Todos los derechos reservados.</p>
+        </div>
     </footer>
 
     <script src="{% static 'js/darkmode.js' %}"></script>

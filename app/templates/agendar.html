@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Agéndame{% endblock %}
+
+{% block content %}
+<section class="booking-section">
+    <div class="container">
+
+        <div class="booking-header">
+            <h1>Agenda una reunión</h1>
+            <p>Selecciona una fecha y hora disponible para conversar sobre tu proyecto o consulta.</p>
+        </div>
+
+        <!-- Indicador de pasos -->
+        <div class="booking-steps-indicator">
+            <div class="bsi-step active" id="bsi-1">
+                <div class="bsi-circle">
+                    <span class="bsi-num">1</span>
+                    <i class="fas fa-check bsi-check"></i>
+                </div>
+                <span class="bsi-label">Fecha y hora</span>
+            </div>
+            <div class="bsi-line"></div>
+            <div class="bsi-step" id="bsi-2">
+                <div class="bsi-circle">
+                    <span class="bsi-num">2</span>
+                    <i class="fas fa-check bsi-check"></i>
+                </div>
+                <span class="bsi-label">Tus datos</span>
+            </div>
+        </div>
+
+        {% if messages %}
+        <div class="booking-messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- PASO 1: Calendario y horarios -->
+        <div class="booking-panel" id="panel-1">
+            <div class="booking-calendar-layout">
+
+                <!-- Calendario -->
+                <div class="booking-calendar">
+                    <div class="cal-header">
+                        <button type="button" id="cal-prev" class="cal-nav" aria-label="Mes anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3 id="cal-month-label"></h3>
+                        <button type="button" id="cal-next" class="cal-nav" aria-label="Mes siguiente">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="cal-weekdays">
+                        <span>Lun</span><span>Mar</span><span>Mié</span>
+                        <span>Jue</span><span>Vie</span>
+                        <span class="cal-weekend">Sáb</span><span class="cal-weekend">Dom</span>
+                    </div>
+                    <div class="cal-grid" id="cal-grid"></div>
+                    <p class="cal-legend">
+                        <span class="legend-dot available"></span> Disponible
+                        &nbsp;
+                        <span class="legend-dot disabled"></span> No disponible
+                    </p>
+                </div>
+
+                <!-- Horarios disponibles -->
+                <div class="booking-slots">
+                    <div class="slots-placeholder" id="slots-placeholder">
+                        <i class="fas fa-calendar-day"></i>
+                        <p>Selecciona una fecha para ver los horarios disponibles</p>
+                    </div>
+                    <div id="slots-panel" style="display:none;">
+                        <h4 id="slots-date-label"></h4>
+                        <div class="slots-grid" id="slots-grid"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="booking-panel-footer">
+                <p class="booking-tz-note"><i class="fas fa-globe-americas"></i> Horarios en hora de Santiago, Chile (CLT/CLST)</p>
+                <button type="button" class="btn btn-primary" id="btn-step2" disabled>
+                    Continuar <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PASO 2: Datos de contacto -->
+        <div class="booking-panel" id="panel-2" style="display:none;">
+
+            <div class="booking-summary-bar">
+                <div class="bsb-icon"><i class="fas fa-calendar-check"></i></div>
+                <div class="bsb-info">
+                    <strong id="summary-date-text"></strong>
+                    <span id="summary-time-text"></span>
+                </div>
+                <button type="button" class="bsb-edit-btn" id="btn-back-step1">
+                    <i class="fas fa-pencil-alt"></i> Cambiar
+                </button>
+            </div>
+
+            <form method="post" class="booking-form" id="booking-form" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="date" id="f-date">
+                <input type="hidden" name="time" id="f-time">
+
+                <div class="form-group">
+                    <label for="f-name">Nombre completo <span class="f-req">*</span></label>
+                    <input type="text" id="f-name" name="name" required
+                           placeholder="Tu nombre completo" autocomplete="name">
+                </div>
+
+                <div class="form-row-two">
+                    <div class="form-group">
+                        <label for="f-email">Correo electrónico <span class="f-req">*</span></label>
+                        <input type="email" id="f-email" name="email" required
+                               placeholder="tu@correo.com" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="f-phone">Teléfono <span class="f-req">*</span></label>
+                        <input type="tel" id="f-phone" name="phone" required
+                               placeholder="+56 9 XXXX XXXX" autocomplete="tel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="f-notes">¿De qué quieres hablar? <span class="f-optional">(opcional)</span></label>
+                    <textarea id="f-notes" name="notes"
+                              placeholder="Cuéntame brevemente sobre tu proyecto o consulta..."></textarea>
+                </div>
+
+                <div class="booking-form-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-step1-form">
+                        <i class="fas fa-arrow-left"></i> Atrás
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check"></i> Confirmar reserva
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<script>
+(function () {
+    const MONTH_NAMES = [
+        'Enero','Febrero','Marzo','Abril','Mayo','Junio',
+        'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+    ];
+    const DAYS_ES = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
+    const MONTHS_ES = [
+        'enero','febrero','marzo','abril','mayo','junio',
+        'julio','agosto','septiembre','octubre','noviembre','diciembre'
+    ];
+
+    const MAX_DAYS = 30;
+    const MIN_DAYS = 1;
+
+    let calYear, calMonth;
+    let selectedDate = null, selectedTime = null;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    calYear = today.getFullYear();
+    calMonth = today.getMonth();
+
+    function padZ(n) { return String(n).padStart(2, '0'); }
+
+    function toDateStr(d) {
+        return `${d.getFullYear()}-${padZ(d.getMonth() + 1)}-${padZ(d.getDate())}`;
+    }
+
+    function formatDateEs(dateStr) {
+        const [y, m, d] = dateStr.split('-').map(Number);
+        const dt = new Date(y, m - 1, d);
+        const dow = (dt.getDay() + 6) % 7;   // Mon = 0
+        return `${DAYS_ES[dow]}, ${d} de ${MONTHS_ES[m - 1]} de ${y}`;
+    }
+
+    function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+    // ----------------------------------------------------------------
+    // Renderiza el calendario
+    // ----------------------------------------------------------------
+    function renderCalendar(year, month) {
+        document.getElementById('cal-month-label').textContent =
+            `${MONTH_NAMES[month]} ${year}`;
+
+        const grid = document.getElementById('cal-grid');
+        grid.innerHTML = '';
+
+        const firstDay = new Date(year, month, 1);
+        const lastDay  = new Date(year, month + 1, 0);
+
+        const startOffset = (firstDay.getDay() + 6) % 7;   // Mon = 0
+        for (let i = 0; i < startOffset; i++) {
+            const empty = document.createElement('div');
+            empty.className = 'cal-cell empty';
+            grid.appendChild(empty);
+        }
+
+        const minDate = new Date(today);
+        minDate.setDate(minDate.getDate() + MIN_DAYS);
+        const maxDate = new Date(today);
+        maxDate.setDate(maxDate.getDate() + MAX_DAYS);
+
+        for (let day = 1; day <= lastDay.getDate(); day++) {
+            const cell     = document.createElement('div');
+            const cellDate = new Date(year, month, day);
+            const dow      = cellDate.getDay();    // 0 = Sun
+            const isWeekend = dow === 0 || dow === 6;
+            const isPast    = cellDate < minDate;
+            const isFar     = cellDate > maxDate;
+            const isToday   = cellDate.toDateString() === today.toDateString();
+            const dateStr   = toDateStr(cellDate);
+
+            cell.textContent = day;
+            cell.className   = 'cal-cell';
+
+            if (isToday) cell.classList.add('today');
+
+            if (isWeekend || isPast || isFar) {
+                cell.classList.add('disabled');
+            } else {
+                cell.classList.add('available');
+                if (dateStr === selectedDate) cell.classList.add('selected');
+                cell.addEventListener('click', () => handleDateClick(cellDate, dateStr, cell));
+            }
+            grid.appendChild(cell);
+        }
+    }
+
+    // ----------------------------------------------------------------
+    // Click en un día
+    // ----------------------------------------------------------------
+    function handleDateClick(cellDate, dateStr, cell) {
+        document.querySelectorAll('.cal-cell.selected').forEach(c => c.classList.remove('selected'));
+        cell.classList.add('selected');
+        selectedDate = dateStr;
+        selectedTime = null;
+        document.getElementById('btn-step2').disabled = true;
+
+        const placeholder = document.getElementById('slots-placeholder');
+        const panel       = document.getElementById('slots-panel');
+        placeholder.style.display = 'flex';
+        placeholder.innerHTML = '<i class="fas fa-spinner fa-spin"></i><p>Cargando horarios...</p>';
+        panel.style.display = 'none';
+
+        fetch(`/agendar/horarios/?date=${dateStr}`)
+            .then(r => r.json())
+            .then(data => {
+                placeholder.style.display = 'none';
+                panel.style.display       = 'block';
+                document.getElementById('slots-date-label').textContent = cap(formatDateEs(dateStr));
+
+                const slotGrid = document.getElementById('slots-grid');
+                slotGrid.innerHTML = '';
+
+                if (!data.slots.length) {
+                    slotGrid.innerHTML =
+                        '<p class="no-slots"><i class="fas fa-calendar-times"></i> ' +
+                        'No hay horarios disponibles para esta fecha.</p>';
+                    return;
+                }
+
+                data.slots.forEach(slot => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'slot-btn';
+                    btn.innerHTML = `<i class="fas fa-clock"></i> ${slot} hrs`;
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.slot-btn.selected').forEach(b => b.classList.remove('selected'));
+                        btn.classList.add('selected');
+                        selectedTime = slot;
+                        document.getElementById('btn-step2').disabled = false;
+                    });
+                    slotGrid.appendChild(btn);
+                });
+            })
+            .catch(() => {
+                placeholder.style.display = 'flex';
+                placeholder.innerHTML =
+                    '<i class="fas fa-exclamation-triangle"></i><p>Error al cargar horarios. Intenta nuevamente.</p>';
+            });
+    }
+
+    // ----------------------------------------------------------------
+    // Navegación del calendario
+    // ----------------------------------------------------------------
+    document.getElementById('cal-prev').addEventListener('click', function () {
+        const minM = today.getMonth(), minY = today.getFullYear();
+        if (calYear > minY || (calYear === minY && calMonth > minM)) {
+            calMonth--;
+            if (calMonth < 0) { calMonth = 11; calYear--; }
+            renderCalendar(calYear, calMonth);
+        }
+    });
+
+    document.getElementById('cal-next').addEventListener('click', function () {
+        calMonth++;
+        if (calMonth > 11) { calMonth = 0; calYear++; }
+        renderCalendar(calYear, calMonth);
+    });
+
+    // ----------------------------------------------------------------
+    // Navegación entre pasos
+    // ----------------------------------------------------------------
+    function goToStep2() {
+        if (!selectedDate || !selectedTime) return;
+
+        document.getElementById('f-date').value = selectedDate;
+        document.getElementById('f-time').value = selectedTime;
+        document.getElementById('summary-date-text').textContent = cap(formatDateEs(selectedDate));
+        document.getElementById('summary-time-text').textContent = selectedTime + ' hrs';
+
+        document.getElementById('panel-1').style.display = 'none';
+        document.getElementById('panel-2').style.display = 'block';
+
+        document.getElementById('bsi-1').classList.remove('active');
+        document.getElementById('bsi-1').classList.add('completed');
+        document.getElementById('bsi-2').classList.add('active');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToStep1() {
+        document.getElementById('panel-2').style.display = 'none';
+        document.getElementById('panel-1').style.display = 'block';
+        document.getElementById('bsi-2').classList.remove('active');
+        document.getElementById('bsi-1').classList.remove('completed');
+        document.getElementById('bsi-1').classList.add('active');
+    }
+
+    document.getElementById('btn-step2').addEventListener('click', goToStep2);
+    document.getElementById('btn-back-step1').addEventListener('click', goToStep1);
+    document.getElementById('btn-back-step1-form').addEventListener('click', goToStep1);
+
+    // Init
+    renderCalendar(calYear, calMonth);
+})();
+</script>
+{% endblock %}

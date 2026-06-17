@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Reunión cancelada{% endblock %}
+
+{% block content %}
+<section class="booking-result-section">
+    <div class="container">
+        <div class="booking-result-card">
+
+            <div class="result-icon result-icon--cancelled">
+                <i class="fas fa-calendar-times"></i>
+            </div>
+
+            <h1>Reunión cancelada</h1>
+            <p class="result-subtitle">
+                Tu reunión del {{ date_formatted }} a las {{ appointment.time|time:"H:i" }} hrs
+                ha sido cancelada correctamente.
+            </p>
+
+            <p class="result-cta-text">¿Deseas reagendar en otro horario?</p>
+
+            <a href="{% url 'agendar' %}" class="btn btn-primary">Agendar nueva reunión</a>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
