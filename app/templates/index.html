@@ -5,6 +5,9 @@
 
 {% block content %}
 <section class="hero">
+    <div class="hero-bg-photo" aria-hidden="true">
+        <img src="{% static 'images/front_img.jpeg' %}" alt="">
+    </div>
     <div class="container">
         <div class="hero-content">
             <h1>Consultoría en Tecnología y Procesos de Negocio</h1>
@@ -13,9 +16,6 @@
                 <a href="{% url 'services' %}" class="btn btn-primary">Ver Servicios</a>
                 <a href="{% url 'agendar' %}" class="btn btn-secondary">Agéndame</a>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="{% static 'images/front_img.jpeg' %}" alt="Mi Foto de Perfil">
         </div>
     </div>
 </section>

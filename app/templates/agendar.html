@@ -59,7 +59,11 @@
                         <span>Jue</span><span>Vie</span>
                         <span class="cal-weekend">Sáb</span><span class="cal-weekend">Dom</span>
                     </div>
-                    <div class="cal-grid" id="cal-grid"></div>
+                    <div class="cal-grid" id="cal-grid">
+                        <div class="cal-loading" id="cal-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </div>
                     <p class="cal-legend">
                         <span class="legend-dot available"></span> Disponible
                         &nbsp;
@@ -153,23 +157,29 @@
         'Enero','Febrero','Marzo','Abril','Mayo','Junio',
         'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
     ];
-    const DAYS_ES = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
+    const DAYS_ES   = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
     const MONTHS_ES = [
         'enero','febrero','marzo','abril','mayo','junio',
         'julio','agosto','septiembre','octubre','noviembre','diciembre'
     ];
 
-    const MAX_DAYS = 30;
-    const MIN_DAYS = 1;
+    // Estado de configuración (se sobreescribe con la respuesta del backend)
+    let availableWeekdays = [0, 1, 2, 3, 4];   // fallback: lun-vie
+    let blockedDates      = new Set();
+    let MIN_DAYS          = 1;
+    let MAX_DAYS          = 30;
 
     let calYear, calMonth;
     let selectedDate = null, selectedTime = null;
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    calYear = today.getFullYear();
+    calYear  = today.getFullYear();
     calMonth = today.getMonth();
 
+    // ----------------------------------------------------------------
+    // Utilidades
+    // ----------------------------------------------------------------
     function padZ(n) { return String(n).padStart(2, '0'); }
 
     function toDateStr(d) {
@@ -178,7 +188,7 @@
 
     function formatDateEs(dateStr) {
         const [y, m, d] = dateStr.split('-').map(Number);
-        const dt = new Date(y, m - 1, d);
+        const dt  = new Date(y, m - 1, d);
         const dow = (dt.getDay() + 6) % 7;   // Mon = 0
         return `${DAYS_ES[dow]}, ${d} de ${MONTHS_ES[m - 1]} de ${y}`;
     }
@@ -211,26 +221,31 @@
         maxDate.setDate(maxDate.getDate() + MAX_DAYS);
 
         for (let day = 1; day <= lastDay.getDate(); day++) {
-            const cell     = document.createElement('div');
-            const cellDate = new Date(year, month, day);
-            const dow      = cellDate.getDay();    // 0 = Sun
-            const isWeekend = dow === 0 || dow === 6;
-            const isPast    = cellDate < minDate;
-            const isFar     = cellDate > maxDate;
-            const isToday   = cellDate.toDateString() === today.toDateString();
+            const cell      = document.createElement('div');
+            const cellDate  = new Date(year, month, day);
+            const dowMonFst = (cellDate.getDay() + 6) % 7;   // 0 = Mon
             const dateStr   = toDateStr(cellDate);
+            const isToday   = cellDate.toDateString() === today.toDateString();
+
+            const isUnavailDay = !availableWeekdays.includes(dowMonFst);
+            const isBlocked    = blockedDates.has(dateStr);
+            const isPast       = cellDate < minDate;
+            const isFar        = cellDate > maxDate;
 
             cell.textContent = day;
             cell.className   = 'cal-cell';
 
             if (isToday) cell.classList.add('today');
 
-            if (isWeekend || isPast || isFar) {
+            if (isUnavailDay || isBlocked || isPast || isFar) {
                 cell.classList.add('disabled');
+                if (isBlocked && !isUnavailDay && !isPast && !isFar) {
+                    cell.title = 'Fecha no disponible';
+                }
             } else {
                 cell.classList.add('available');
                 if (dateStr === selectedDate) cell.classList.add('selected');
-                cell.addEventListener('click', () => handleDateClick(cellDate, dateStr, cell));
+                cell.addEventListener('click', () => handleDateClick(dateStr, cell));
             }
             grid.appendChild(cell);
         }
@@ -239,7 +254,7 @@
     // ----------------------------------------------------------------
     // Click en un día
     // ----------------------------------------------------------------
-    function handleDateClick(cellDate, dateStr, cell) {
+    function handleDateClick(dateStr, cell) {
         document.querySelectorAll('.cal-cell.selected').forEach(c => c.classList.remove('selected'));
         cell.classList.add('selected');
         selectedDate = dateStr;
@@ -341,8 +356,19 @@
     document.getElementById('btn-back-step1').addEventListener('click', goToStep1);
     document.getElementById('btn-back-step1-form').addEventListener('click', goToStep1);
 
-    // Init
-    renderCalendar(calYear, calMonth);
+    // ----------------------------------------------------------------
+    // Init: carga configuración desde backend, luego renderiza
+    // ----------------------------------------------------------------
+    fetch('/agendar/configuracion-calendario/')
+        .then(r => r.json())
+        .then(cfg => {
+            availableWeekdays = cfg.available_weekdays;
+            blockedDates      = new Set(cfg.blocked_dates);
+            MIN_DAYS          = cfg.min_days_ahead;
+            MAX_DAYS          = cfg.max_days_ahead;
+        })
+        .catch(() => { /* usa fallback */ })
+        .finally(() => renderCalendar(calYear, calMonth));
 })();
 </script>
 {% endblock %}

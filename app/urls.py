@@ -11,6 +11,7 @@ urlpatterns = [
     path('servicios/', views.services, name='services'),
     # Agendamiento
     path('agendar/', views.agendar, name='agendar'),
+    path('agendar/configuracion-calendario/', views.get_calendar_config, name='get_calendar_config'),
     path('agendar/horarios/', views.get_available_slots, name='get_available_slots'),
     path('agendar/confirmar/<uuid:token>/', views.confirm_appointment, name='confirm_appointment'),
     path('agendar/cancelar/<uuid:token>/', views.cancel_appointment, name='cancel_appointment'),

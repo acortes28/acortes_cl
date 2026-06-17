@@ -9,6 +9,7 @@ Configurar cron (en el servidor) para ejecutar cada hora:
 """
 from django.core.management.base import BaseCommand
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.conf import settings
 from datetime import datetime, timedelta
 import pytz
@@ -56,30 +57,32 @@ class Command(BaseCommand):
             date_str = _format_date_es(appt.date).capitalize()
 
             subject = "Recordatorio: Tu reunión con Alejandro Cortés es mañana"
-            message = (
+
+            plain = (
                 f"Hola {appt.name},\n\n"
-                f"Este es un recordatorio de tu reunión programada para mañana.\n\n"
-                f"Detalles:\n"
-                f"  Fecha: {date_str}\n"
-                f"  Hora:  {appt.time.strftime('%H:%M')} hrs\n\n"
-                f"Por favor confirma tu asistencia haciendo clic aquí:\n"
-                f"{confirm_url}\n\n"
-                f"Si no puedes asistir, cancela aquí:\n"
-                f"{cancel_url}\n\n"
-                f"Si ya confirmaste anteriormente, ignora este mensaje.\n\n"
-                f"---\n"
-                f"Alejandro Cortés V.\n"
-                f"Consultor en Tecnología y Procesos de Negocio\n"
-                f"contacto@acortesv.cl  |  +56 9 4482 3643\n"
-                f"www.acortesv.cl"
+                f"Recordatorio: tu reunión es mañana.\n"
+                f"Fecha: {date_str}\n"
+                f"Hora:  {appt.time.strftime('%H:%M')} hrs\n\n"
+                f"Confirmar asistencia: {confirm_url}\n"
+                f"Cancelar: {cancel_url}\n\n"
+                f"Alejandro Cortés V. | contacto@acortesv.cl"
             )
 
+            context = {
+                'appointment': appt,
+                'date_formatted': date_str,
+                'confirm_url': confirm_url,
+                'cancel_url': cancel_url,
+            }
+
             try:
+                html = render_to_string('emails/booking_reminder.html', context)
                 send_mail(
                     subject=subject,
-                    message=message,
+                    message=plain,
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[appt.email],
+                    html_message=html,
                     fail_silently=False,
                 )
                 appt.reminder_sent = True

@@ -1,23 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.conf import settings
 from django.contrib import messages
 from django.views.decorators.http import require_GET
 from datetime import date as date_type, datetime, timedelta
 from .forms import ContactForm
-from .models import Appointment
+from .models import Appointment, AvailableSlot, BlockedDate
 import logging
 
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Configuración de disponibilidad para agendamiento
+# Configuración de ventana de agendamiento (días hábiles)
 # ---------------------------------------------------------------------------
-AVAILABLE_WEEKDAYS = [0, 1, 2, 3, 4]   # Lun–Vie
-AVAILABLE_SLOTS = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00']
-MIN_BOOKING_DAYS_AHEAD = 1              # Al menos 1 día de anticipación
-MAX_BOOKING_DAYS_AHEAD = 30             # Máximo 30 días hacia adelante
+MIN_BOOKING_DAYS_AHEAD = 1   # Mínimo de días de anticipación
+MAX_BOOKING_DAYS_AHEAD = 30  # Máximo de días hacia adelante
 
 DAYS_ES = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
 MONTHS_ES = [
@@ -34,28 +33,23 @@ def _send_booking_confirmation(appointment):
     """Correo al prospecto confirmando que quedó agendado (no confirmado aún)."""
     date_str = _format_date_es(appointment.date).capitalize()
     subject = f"Reunión agendada con Alejandro Cortés – {appointment.date.strftime('%d/%m/%Y')}"
-    message = (
+    context = {'appointment': appointment, 'date_formatted': date_str}
+    plain = (
         f"Hola {appointment.name},\n\n"
-        f"Tu reunión ha sido registrada correctamente.\n\n"
-        f"Detalles:\n"
-        f"  Fecha: {date_str}\n"
-        f"  Hora:  {appointment.time.strftime('%H:%M')} hrs\n\n"
-        f"¿Qué sigue?\n"
-        f"Recibirás un correo 24 horas antes de la reunión con un enlace para confirmar "
-        f"tu asistencia.\n"
-        f"Si necesitas cancelar o reprogramar, escríbeme a contacto@acortesv.cl\n\n"
-        f"---\n"
-        f"Alejandro Cortés V.\n"
-        f"Consultor en Tecnología y Procesos de Negocio\n"
-        f"contacto@acortesv.cl  |  +56 9 4482 3643\n"
-        f"www.acortesv.cl"
+        f"Tu reunión ha sido registrada correctamente.\n"
+        f"Fecha: {date_str}\n"
+        f"Hora:  {appointment.time.strftime('%H:%M')} hrs\n\n"
+        f"Recibirás un correo 24 horas antes con enlace para confirmar tu asistencia.\n\n"
+        f"Alejandro Cortés V. | contacto@acortesv.cl"
     )
     try:
+        html = render_to_string('emails/booking_confirmation.html', context)
         send_mail(
             subject=subject,
-            message=message,
+            message=plain,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[appointment.email],
+            html_message=html,
             fail_silently=True,
         )
     except Exception as exc:
@@ -64,27 +58,25 @@ def _send_booking_confirmation(appointment):
 
 def _send_host_notification(appointment):
     """Notifica a Alejandro de una nueva reserva."""
+    date_str = _format_date_es(appointment.date).capitalize()
     subject = (
         f"Nueva reunión agendada: {appointment.name} – "
         f"{appointment.date.strftime('%d/%m/%Y')} {appointment.time.strftime('%H:%M')}"
     )
-    message = (
-        f"Se ha agendado una nueva reunión en acortesv.cl\n\n"
-        f"Nombre:   {appointment.name}\n"
-        f"Email:    {appointment.email}\n"
-        f"Teléfono: {appointment.phone}\n"
-        f"Fecha:    {appointment.date.strftime('%d/%m/%Y')}\n"
-        f"Hora:     {appointment.time.strftime('%H:%M')} hrs\n"
-        f"Notas:    {appointment.notes or 'Sin notas'}\n\n"
-        f"Estado: Pendiente de confirmación\n"
-        f"(El prospecto recibirá el recordatorio 24 h antes para confirmar.)"
+    context = {'appointment': appointment, 'date_formatted': date_str}
+    plain = (
+        f"Nueva reunión: {appointment.name} | {appointment.email} | {appointment.phone}\n"
+        f"Fecha: {date_str} | Hora: {appointment.time.strftime('%H:%M')} hrs\n"
+        f"Notas: {appointment.notes or 'Sin notas'}"
     )
     try:
+        html = render_to_string('emails/host_notification.html', context)
         send_mail(
             subject=subject,
-            message=message,
+            message=plain,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[settings.CONTACT_EMAIL],
+            html_message=html,
             fail_silently=True,
         )
     except Exception as exc:
@@ -214,9 +206,13 @@ def agendar(request):
 
             if booking_date < min_date or booking_date > max_date:
                 errors.append('La fecha seleccionada no está disponible.')
-            elif booking_date.weekday() not in AVAILABLE_WEEKDAYS:
-                errors.append('Solo se pueden agendar reuniones de lunes a viernes.')
-            elif time_str not in AVAILABLE_SLOTS:
+            elif BlockedDate.objects.filter(date=booking_date).exists():
+                errors.append('La fecha seleccionada no está disponible.')
+            elif not AvailableSlot.objects.filter(
+                weekday=booking_date.weekday(),
+                time=booking_time,
+                is_active=True,
+            ).exists():
                 errors.append('El horario seleccionado no está disponible.')
             elif Appointment.objects.filter(
                 date=booking_date,
@@ -255,6 +251,33 @@ def agendar(request):
 
 
 @require_GET
+def get_calendar_config(request):
+    """Devuelve al JS los días activos, fechas bloqueadas y ventana de reserva."""
+    today = date_type.today()
+    max_date = today + timedelta(days=MAX_BOOKING_DAYS_AHEAD)
+
+    active_weekdays = list(
+        AvailableSlot.objects.filter(is_active=True)
+        .values_list('weekday', flat=True)
+        .distinct()
+        .order_by('weekday')
+    )
+
+    blocked = list(
+        BlockedDate.objects.filter(date__gte=today, date__lte=max_date)
+        .values_list('date', flat=True)
+    )
+    blocked_dates = [d.strftime('%Y-%m-%d') for d in blocked]
+
+    return JsonResponse({
+        'available_weekdays': active_weekdays,
+        'blocked_dates': blocked_dates,
+        'min_days_ahead': MIN_BOOKING_DAYS_AHEAD,
+        'max_days_ahead': MAX_BOOKING_DAYS_AHEAD,
+    })
+
+
+@require_GET
 def get_available_slots(request):
     date_str = request.GET.get('date', '')
     try:
@@ -266,11 +289,19 @@ def get_available_slots(request):
     min_date = today + timedelta(days=MIN_BOOKING_DAYS_AHEAD)
     max_date = today + timedelta(days=MAX_BOOKING_DAYS_AHEAD)
 
-    if (
-        requested_date < min_date
-        or requested_date > max_date
-        or requested_date.weekday() not in AVAILABLE_WEEKDAYS
-    ):
+    if requested_date < min_date or requested_date > max_date:
+        return JsonResponse({'slots': []})
+
+    if BlockedDate.objects.filter(date=requested_date).exists():
+        return JsonResponse({'slots': []})
+
+    # Horarios activos para este día de la semana desde la BD
+    db_slots = (
+        AvailableSlot.objects.filter(weekday=requested_date.weekday(), is_active=True)
+        .values_list('time', flat=True)
+        .order_by('time')
+    )
+    if not db_slots:
         return JsonResponse({'slots': []})
 
     booked = Appointment.objects.filter(
@@ -279,7 +310,7 @@ def get_available_slots(request):
     ).values_list('time', flat=True)
 
     booked_times = {t.strftime('%H:%M') for t in booked}
-    available = [s for s in AVAILABLE_SLOTS if s not in booked_times]
+    available = [t.strftime('%H:%M') for t in db_slots if t.strftime('%H:%M') not in booked_times]
 
     return JsonResponse({'slots': available})
 
@@ -295,18 +326,19 @@ def confirm_appointment(request, token):
 
         date_str = _format_date_es(appt.date).capitalize()
         subject = "Asistencia confirmada – Reunión con Alejandro Cortés"
-        message = (
+        plain = (
             f"Hola {appt.name},\n\n"
-            f"¡Perfecto! Tu asistencia ha sido confirmada.\n\n"
-            f"  Fecha: {date_str}\n"
-            f"  Hora:  {appt.time.strftime('%H:%M')} hrs\n\n"
-            f"Nos vemos entonces.\n\n"
-            f"---\n"
-            f"Alejandro Cortés V.\n"
-            f"contacto@acortesv.cl"
+            f"¡Perfecto! Tu asistencia ha sido confirmada.\n"
+            f"Fecha: {date_str} | Hora: {appt.time.strftime('%H:%M')} hrs\n\n"
+            f"Nos vemos entonces.\nAlejandro Cortés V."
         )
         try:
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [appt.email], fail_silently=True)
+            html = render_to_string('emails/booking_confirmed.html', {
+                'appointment': appt,
+                'date_formatted': date_str,
+            })
+            send_mail(subject, plain, settings.DEFAULT_FROM_EMAIL, [appt.email],
+                      html_message=html, fail_silently=True)
         except Exception:
             pass
 

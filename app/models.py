@@ -2,6 +2,45 @@ import uuid
 from django.db import models
 
 
+class AvailableSlot(models.Model):
+    WEEKDAY_CHOICES = [
+        (0, 'Lunes'),
+        (1, 'Martes'),
+        (2, 'Miércoles'),
+        (3, 'Jueves'),
+        (4, 'Viernes'),
+        (5, 'Sábado'),
+        (6, 'Domingo'),
+    ]
+
+    weekday = models.IntegerField('Día de la semana', choices=WEEKDAY_CHOICES)
+    time = models.TimeField('Hora')
+    is_active = models.BooleanField('Activo', default=True)
+
+    class Meta:
+        unique_together = [['weekday', 'time']]
+        ordering = ['weekday', 'time']
+        verbose_name = 'Horario disponible'
+        verbose_name_plural = 'Horarios disponibles'
+
+    def __str__(self):
+        return f"{self.get_weekday_display()} {self.time.strftime('%H:%M')}"
+
+
+class BlockedDate(models.Model):
+    date = models.DateField('Fecha', unique=True)
+    reason = models.CharField('Motivo (opcional)', max_length=200, blank=True)
+
+    class Meta:
+        ordering = ['date']
+        verbose_name = 'Fecha bloqueada'
+        verbose_name_plural = 'Fechas bloqueadas'
+
+    def __str__(self):
+        label = self.reason or 'Bloqueado'
+        return f"{self.date.strftime('%d/%m/%Y')} – {label}"
+
+
 class Appointment(models.Model):
     STATUS_PENDING = 'pending'
     STATUS_CONFIRMED = 'confirmed'

@@ -88,7 +88,7 @@ ROOT_URLCONF = 'acortes_cl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'app' / 'management' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
