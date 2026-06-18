@@ -319,7 +319,7 @@ def confirm_appointment(request, token):
     try:
         appt = Appointment.objects.get(
             confirmation_token=token,
-            status=Appointment.STATUS_PENDING,
+            status__in=[Appointment.STATUS_PENDING, Appointment.STATUS_CONFIRMED],
         )
         appt.status = Appointment.STATUS_CONFIRMED
         appt.save(update_fields=['status'])
@@ -348,7 +348,7 @@ def confirm_appointment(request, token):
             'date_formatted': date_str,
         })
     except Appointment.DoesNotExist:
-        messages.error(request, 'El enlace no es válido o la reunión ya fue confirmada.')
+        messages.error(request, 'El enlace no es válido o la reunión fue cancelada.')
         return redirect('agendar')
 
 
