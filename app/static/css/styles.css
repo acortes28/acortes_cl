@@ -272,7 +272,7 @@ nav {
     background: linear-gradient(135deg, transparent 45%, rgba(13, 148, 136, 0.18) 100%);
 }
 
-/* Brillo ambiental izquierdo (mantiene el glow original) */
+/* Brillo ambiental izquierdo (mantiene el glow original)
 .hero::before {
     content: '';
     position: absolute;
@@ -282,7 +282,7 @@ nav {
         radial-gradient(circle at 5%  20%, var(--glow-color) 0%, transparent 35%);
     z-index: 1;
     pointer-events: none;
-}
+} */
 
 .hero > .container {
     width: 100%;
@@ -2246,9 +2246,7 @@ footer {
     padding: 120px 0 60px;
     text-align: center;
     position: relative;
-    background:
-        radial-gradient(circle at 20% 50%, var(--glow-color) 0%, transparent 60%),
-        radial-gradient(circle at 80% 50%, var(--glow-color) 0%, transparent 60%);
+
 }
 
 .services-hero-content {
