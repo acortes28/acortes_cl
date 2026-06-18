@@ -1,19 +1,39 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alejandro Cortés V. — Consultoría en análisis de procesos, automatización y Business Analysis. Ingeniero Civil Industrial con más de 6 años de experiencia en Chile.">
-    <meta name="keywords" content="consultoría, análisis de procesos, BPMN, automatización, Business Analysis, Power BI, Python, Santiago Chile">
     <meta name="author" content="Alejandro Cortés V.">
-    <meta property="og:title" content="Alejandro Cortés V. — Consultoría TI">
-    <meta property="og:description" content="Servicios de consultoría en análisis de procesos, automatización y Business Analysis para empresas en Chile.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Título y descripción por página -->
+    <title>{% block page_title %}Alejandro Cortés V. | Consultor de Negocios y Business Analyst en Chile{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Alejandro Cortés V., consultor de negocios y business analyst en Santiago, Chile. Asesoría en análisis de procesos, automatización RPA y consultoría TI para empresas.{% endblock %}">
+    <link rel="canonical" href="{% block canonical_url %}https://acortesv.cl{% endblock %}">
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://acortesv.cl">
-    <title>Alejandro Cortés - {% block title %}{% endblock %}</title>
-    {% load static %}
+    <meta property="og:site_name" content="Alejandro Cortés V.">
+    <meta property="og:title" content="{% block og_title %}Alejandro Cortés V. | Consultor de Negocios en Chile{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Consultor independiente especializado en asesoría de negocios, análisis de procesos y business analysis en Santiago, Chile.{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://acortesv.cl{% endblock %}">
+    <meta property="og:image" content="https://acortesv.cl{% static 'images/front_img.jpeg' %}">
+    <meta property="og:locale" content="es_CL">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Alejandro Cortés V. | Consultor de Negocios{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Consultor de negocios y business analyst en Chile. Análisis de procesos, automatización y consultoría TI.{% endblock %}">
+    <meta name="twitter:image" content="https://acortesv.cl{% static 'images/front_img.jpeg' %}">
+
+    <!-- Structured Data (JSON-LD) -->
+    {% block structured_data %}{% endblock %}
+
+    <!-- Compat block title (no eliminar) -->
+    {% block title %}{% endblock %}
+
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">

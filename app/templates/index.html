@@ -1,7 +1,102 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Inicio{% endblock %}
+{% block page_title %}Alejandro Cortés V. | Consultor de Negocios y Business Analyst en Santiago, Chile{% endblock %}
+{% block meta_description %}Consultor de negocios y business analyst independiente en Santiago, Chile. Ofrezco asesoría en análisis de procesos, automatización de tareas, consultoría TI y business analysis para empresas. +6 años de experiencia.{% endblock %}
+{% block canonical_url %}https://acortesv.cl{% endblock %}
+{% block og_title %}Alejandro Cortés V. | Consultor de Negocios en Chile{% endblock %}
+{% block og_description %}Asesoría de negocios en análisis de procesos, automatización RPA y business analysis para empresas chilenas. Agenda una consulta gratuita.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://acortesv.cl/#alejandro",
+      "name": "Alejandro Cortés V.",
+      "jobTitle": "Consultor de Negocios y Business Analyst",
+      "description": "Consultor independiente especializado en asesoría de negocios, análisis de procesos, automatización y business analysis en Chile.",
+      "url": "https://acortesv.cl",
+      "email": "contacto@acortesv.cl",
+      "telephone": "+56950951811",
+      "sameAs": [
+        "https://www.linkedin.com/in/acortes28/",
+        "https://github.com/acortes28"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressRegion": "Región Metropolitana",
+        "addressCountry": "CL"
+      },
+      "knowsAbout": [
+        "Consultoría de Negocios",
+        "Business Analysis",
+        "Asesoría de Negocios",
+        "Análisis de Procesos",
+        "Automatización RPA",
+        "BPMN",
+        "Python",
+        "Power BI",
+        "Gestión de Proyectos"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://acortesv.cl/#consultoria",
+      "name": "Alejandro Cortés V. — Consultoría de Negocios",
+      "description": "Servicios de asesoría de negocios: análisis y optimización de procesos, automatización RPA, business analysis y consultoría TI para empresas en Chile.",
+      "url": "https://acortesv.cl",
+      "founder": { "@id": "https://acortesv.cl/#alejandro" },
+      "areaServed": { "@type": "Country", "name": "Chile" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressCountry": "CL"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+56950951811",
+        "email": "contacto@acortesv.cl",
+        "contactType": "Consultas y cotizaciones"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Consultoría",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Análisis y Mejora de Procesos",
+              "description": "Levantamiento, modelamiento BPMN y optimización de procesos operacionales"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Automatización de Procesos",
+              "description": "Robots RPA, automatización de reportería y scripts Python para eliminar tareas manuales"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Analysis",
+              "description": "Requerimientos funcionales, historias de usuario y coordinación de proyectos TI en marcos ágiles"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <section class="hero">

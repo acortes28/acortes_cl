@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -369,3 +369,19 @@ def cancel_appointment(request, token):
     except Appointment.DoesNotExist:
         messages.error(request, 'El enlace no es válido o la reunión ya fue cancelada.')
         return redirect('agendar')
+
+
+# ---------------------------------------------------------------------------
+# SEO — robots.txt y sitemap.xml
+# ---------------------------------------------------------------------------
+
+def robots_txt(request):
+    site_url = getattr(settings, 'SITE_URL', 'https://acortesv.cl')
+    content = render_to_string('robots.txt', {'site_url': site_url})
+    return HttpResponse(content, content_type='text/plain')
+
+
+def sitemap_xml(request):
+    site_url = getattr(settings, 'SITE_URL', 'https://acortesv.cl')
+    content = render_to_string('sitemap.xml', {'site_url': site_url})
+    return HttpResponse(content, content_type='application/xml')

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /agendar/confirmar/
+Disallow: /agendar/cancelar/
+Disallow: /agendar/horarios/
+Disallow: /agendar/configuracion-calendario/
+
+Sitemap: {{ site_url }}/sitemap.xml
