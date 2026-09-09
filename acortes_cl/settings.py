@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
+    'django_distill',
 ]
 
 MIDDLEWARE = [
@@ -166,6 +167,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Para producción
 
 # Configuración de WhiteNoise para archivos estáticos
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# django-distill: directorio de salida del sitio estático (páginas de contenido)
+# Generar con: python manage.py distill generate --collectstatic --force
+DISTILL_DIR = os.path.join(BASE_DIR, 'docs')
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 

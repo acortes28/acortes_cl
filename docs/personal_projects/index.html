@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alejandro Cortés V.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Título y descripción por página -->
+    <title>Proyectos | Automatización y Desarrollo — Alejandro Cortés V.</title>
+    <meta name="description" content="Proyectos de automatización, desarrollo y análisis de datos de Alejandro Cortés V., consultor de negocios y business analyst en Santiago, Chile.">
+    <link rel="canonical" href="https://acortesv.cl/personal_projects/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Alejandro Cortés V.">
+    <meta property="og:title" content="Alejandro Cortés V. | Consultor de Negocios en Chile">
+    <meta property="og:description" content="Consultor independiente especializado en asesoría de negocios, análisis de procesos y business analysis en Santiago, Chile.">
+    <meta property="og:url" content="https://acortesv.cl/personal_projects/">
+    <meta property="og:image" content="https://acortesv.cl/static/images/front_img.jpeg">
+    <meta property="og:locale" content="es_CL">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alejandro Cortés V. | Consultor de Negocios">
+    <meta name="twitter:description" content="Consultor de negocios y business analyst en Chile. Análisis de procesos, automatización y consultoría TI.">
+    <meta name="twitter:image" content="https://acortesv.cl/static/images/front_img.jpeg">
+
+    <!-- Structured Data (JSON-LD) -->
+    
+
+    <!-- Compat block title (no eliminar) -->
+    Proyectos Personales
+
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <a href="/">Alejandro Cortés V.</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/about/" class="nav-link">Quién Soy</a></li>
+                <li><a href="/servicios/" class="nav-link">Servicios</a></li>
+                <li><a href="/experience/" class="nav-link">Experiencia</a></li>
+                <li><a href="/skills/" class="nav-link">Habilidades</a></li>
+                <li><a href="/personal_projects/" class="nav-link">Proyectos</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </nav>
+    </header>
+    
+    
+
+    <main class="main-content">
+        
+<section class="projects-section">
+    <div class="container">
+        <h1>Mis Proyectos Personales</h1>
+        
+        <div class="projects-layout">
+            <!-- Panel lateral con tabs -->
+            <div class="sidebar">
+                <div class="sidebar-tabs">
+                    <button class="sidebar-tab active" data-project="artemis">
+                        <i class="fas fa-book"></i>
+                        <span>Sistema de planificación pedagógica con IA</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="lms-gryphos">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Learning Mangement System Gryphos</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="enrolamiento">
+                        <i class="fas fa-coffee"></i>
+                        <span>Punto de venta para cafeterías</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="rockolapp">
+                        <i class="fas fa-music"></i>
+                        <span>Rockolapp</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="ofixbot">
+                        <i class="fas fa-robot"></i>
+                        <span>OfixBot</span>
+                    </button>
+                    <button class="sidebar-tab" data-project="counter">
+                        <i class="fas fa-clock"></i>
+                        <span>Counter de tiempo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="main-content">
+                <!-- Sistema de planificación pedagógica con IA -->
+                <div class="project-content active" id="artemis">
+                    <div class="project-header">
+                        <h2>Sistema de planificación pedagógica con IA</h2>
+                        <div class="project-meta">
+                            <span class="company">En Curso</span>
+                            <span class="period">2026</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>SaaS de planificación pedagógica para docentes de educación básica y media en Chile para establecimientos apoyado en Inteligencia Artificial para la automatización de planificación de clases.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Implementadas</h3>
+                        <ul>
+                            <li><strong>Gestión de entidades:</strong> Panel de gestión para personas, usuarios, cursos, secciones de cursos y asignaturas.</li>
+                            <li><strong>Gestión académica:</strong> Gestión de curriculos nacionales, horarios, asignaturas, objetivos de aprendizaje, actitudes y habilidades.</li>
+                            <li><strong>Planificación de clases:</strong> Gestión de la planificación de clases por etapa de clase con su actividad y recurso por cada una.</li>
+                            <li><strong>Sección de comentarios por planificación:</strong> Cada clase planificada cuenta con una sección de comentarios para facilitar el seguimiento y retroalimentación.</li>
+                            <li><strong>Curriculos Nacionales almacenados:</strong> Los curriculos nacionales son almacenados en una base de datos vectorial para la lectura eficiente por parte del LLM.</li>
+                            <li><strong>Automatización de la planificación:</strong> Automatización con IA de la planificación de clases de manera individual o semestral.</li>
+                            <li><strong>Flujo de aprobación de UTP:</strong> Flujo de trabajo para la aprobación de las clases planificadas por parte de UTP.</li>
+                            <li><strong>Notificaciones en tiempo real:</strong> Notificaciones automáticas a los docentes acerca de la aprobación, rechazo o comentarios de sus clases planificadas.</li>
+                            <li><strong>Reportes y análisis:</strong> Generación de reportes y análisis de la planificación y ejecución de las clases por docente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Nginx</span>
+                            <span class="tech-tag">Langchain</span>
+                            <span class="tech-tag">Ollama</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://sistemaartemis.cl" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ir a página web
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="project-content" id="lms-gryphos">
+                    <div class="project-header">
+                        <h2>Learning Management System Gryphos</h2>
+                        <div class="project-meta">
+                            <span class="company">Finalizado</span>
+                            <span class="period">2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Creación de un LMS para la gestión y ejecución de capacitaciones para OTEC.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Implementadas</h3>
+                        <ul>
+                            <li><strong>Gestión de cursos:</strong> Gestión de cursos, contenidos y docentes a través de la plataforma con privilegio de administrador.</li>
+                            <li><strong>Flujo de inscripción:</strong> Flujo de inscripción y gestión de matrículas para los usuarios a través de la plataforma web.</li>
+                            <li><strong>Integración a plataforma de correos:</strong> Gestión de correos creados automáticamente en la inscripción con Mailcow.</li>
+                            <li><strong>Integración a plataforma de videollamadas:</strong> Gestión de videollamadas para la interacción en tiempo real entre estudiantes y docentes en la ejecución de clases.</li>
+                            <li><strong>Foro académico:</strong> Espacio para discusiones y colaboración entre estudiantes/capacitados y docentes.</li>
+                            <li><strong>Repositorio de Recursos:</strong> Repositorio con material docente y recursos de aprendizaje.</li>
+                            <li><strong>Sistema de rúbricas:</strong> Creación de rúbricas para la evaluación transparente del estudiante</li>
+                            <li><strong>Tickets de soporte:</strong> Sistema para gestionar y resolver consultas de los usuarios de índole académica y técnica.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Nginx</span>
+                            <span class="tech-tag">Jitsi</span>
+                            <span class="tech-tag">Mailcow</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/acortes28/gryphos_cl" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ver Repositorio
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="project-content" id="enrolamiento">
+                    <div class="project-header">
+                        <h2>Punto de venta para cafeterías</h2>
+                        <div class="project-meta">
+                            <span class="company">Finalizado</span>
+                            <span class="period">2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Creación de software que funciona como punto de venta para cafeterías. Se considera el BOM (Bills of materials) por producto producido en el establecimiento.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Implementadas</h3>
+                        <ul>
+                            <li><strong>Gestión de stock:</strong> Control de stock de productos en el establecimiento.</li>
+                            <li><strong>Control de ventas:</strong> Control de ventas de productos en el establecimiento.</li>
+                            <li><strong>Gestión de producción:</strong> Control de producción de productos en el establecimiento.</li>
+                            <li><strong>Gestión del BOM:</strong> Control del BOM por producto producido en el establecimiento.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Nginx</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        
+                        <a href="https://elevencoffee.cl" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ir a página web
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Rockolapp -->
+                <div class="project-content" id="rockolapp">
+                    <div class="project-header">
+                        <h2>Rockolapp</h2>
+                        <div class="project-meta">
+                            <span class="company">Pausado</span>
+                            <span class="period">2024 - 2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Proyecto para crear aplicación móvil para poder encolar canciones en una playlist de alguna cafetería o bar.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Principales</h3>
+                        <ul>
+                            <li><strong>Encolar canciones:</strong> Encolar canciones en una playlist de alguna cafetería o bar</li>
+                            <li><strong>Ver playlist:</strong> Ver la playlist de la cafetería o bar</li>
+                            <li><strong>Comprar fichas virtuales:</strong> Comprar packs de fichas para poder encolar canciones</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Camunda</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">API REST</span>
+                            <span class="tech-tag">Microservicios</span>
+                            <span class="tech-tag">Nginx</span>
+                            <span class="tech-tag">EC2</span>
+                            <span class="tech-tag">RDS</span>
+                            <span class="tech-tag">S3</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- OfixBot -->
+                <div class="project-content" id="ofixbot">
+                    <div class="project-header">
+                        <h2>OfixBot</h2>
+                        <div class="project-meta">
+                            <span class="company">Finalizado</span>
+                            <span class="period">2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p></p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Principales</h3>
+                        <ul>
+                            <li><strong>Creación automatizada de cotizaciones:</strong> A partir de correos entrantes, se identifican los productos consultados y se elabora una cotización.</li>
+                            <li><strong>Integración con Maxxa ERP:</strong> Navegación automatizada a través de la página Maxxa ERP para generar cotizaciones.</li>
+                            <li><strong>Envío de correo con cotización:</strong> Se adjunta el PDF obtenido del ERP para enviar el correo con la cotización.</li>
+                            <li><strong>Almacenamiento y envío de data:</strong> Generación de reportes en .csv para poder analizar la data.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">API ChatGPT</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/acortes28/ofix_rpa" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ver Repositorio
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <!-- Counter de tiempo -->
+                <div class="project-content" id="counter">
+                    <div class="project-header">
+                        <h2>Counter de tiempo</h2>
+                        <div class="project-meta">
+                            <span class="company">Finalizado</span>
+                            <span class="period">2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>Interfaz gráfica para poder controlar el tiempo de tareas personales en el trabajo.</p>
+                    </div>
+
+                    <div class="project-features">
+                        <h3>Funcionalidades Principales</h3>
+                        <ul>
+                            <li><strong>Control de tiempo:</strong> Control de tiempo de tareas personales en el trabajo</li>
+                            <li><strong>Reportes:</strong> Reportes de tiempo de tareas personales en el trabajo</li>
+                            <li><strong>Histórico de tareas:</strong> Histórico de tareas personales en el trabajo</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-technologies">
+                        <h3>Tecnologías Utilizadas</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Tkinter</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Excel</span>
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/acortes28/counter" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Ver Repositorio
+                        </a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarTabs = document.querySelectorAll('.sidebar-tab');
+    const projectContents = document.querySelectorAll('.project-content');
+
+    sidebarTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetProject = this.getAttribute('data-project');
+            
+            // Remover clase active de todos los tabs y contenidos
+            sidebarTabs.forEach(t => t.classList.remove('active'));
+            projectContents.forEach(c => c.classList.remove('active'));
+            
+            // Agregar clase active al tab clickeado y su contenido correspondiente
+            this.classList.add('active');
+            document.getElementById(targetProject).classList.add('active');
+        });
+    });
+});
+</script>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Alejandro Cortés V.</div>
+                <p class="footer-tagline">Consultoría en análisis de procesos,<br>automatización y Business Analysis.</p>
+                <div class="footer-social-icons">
+                    <a href="https://www.linkedin.com/in/acortes28/" target="_blank" class="footer-social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/acortes28" target="_blank" class="footer-social-icon" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://wa.me/+56950951811" target="_blank" class="footer-social-icon" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-nav-links">
+                    <li><a href="/about/">Quién Soy</a></li>
+                    <li><a href="/servicios/">Servicios</a></li>
+                    <li><a href="/experience/">Experiencia</a></li>
+                    <li><a href="/skills/">Habilidades</a></li>
+                    <li><a href="/personal_projects/">Proyectos</a></li>
+                    <li><a href="/agendar/">Agéndame</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-col-title">Contacto</h4>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@acortesv.cl</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+56 9 5095 1811</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Santiago, Chile</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Alejandro Cortés V. — Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/darkmode.js"></script>
+</body>
+</html>
